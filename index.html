@@ -319,10 +319,10 @@ function on_simple_btn(button){
 
 <script>
 let host=window.location.hostname
-const dict_video = {'videoElement1' : 'ws://'+host+':8000/live/enc1.flv',
-            'videoElement2' : 'ws://'+host+':8000/live/enc2.flv',
-            'videoElement3' : 'ws://'+host+':8000/live/enc3.flv',
-            'videoElement4' : 'ws://'+host+':8000/live/enc4.flv'}
+const dict_video = {'videoElement1' : 'http://'+host+':8000/live/enc1.flv',
+            'videoElement2' : 'http://'+host+':8000/live/enc2.flv',
+            'videoElement3' : 'http://'+host+':8000/live/enc3.flv',
+            'videoElement4' : 'http://'+host+':8000/live/enc4.flv'}
 
 
 function update_video(){
@@ -333,7 +333,13 @@ function update_video(){
                 var flvPlayer = flvjs.createPlayer({
                     type: 'flv',
                     isLive: true,
-                    url: value
+                    url: value,
+                    enableStashBuffer: false,
+                    autoCleanupSourceBuffer: true,
+                    autoCleanupMaxBackwardDuration: 3,
+                    autoCleanupMinBackwardDuration: 2,
+                    lazyLoad: false
+                    
                 });
                     flvPlayer.attachMediaElement(videoElement);
                     flvPlayer.load();

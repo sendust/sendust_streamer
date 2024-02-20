@@ -1,0 +1,458 @@
+02/20/2024, 14:36:05.285501   Start web GUI..
+02/20/2024, 14:36:05.318239   {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1/live/enc1', 'timetb': '03:00\n05:00', 'title': 'rtmp source'}
+02/20/2024, 14:36:05.319187   {'param': "#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -an -f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\nffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00\n05:00', 'title': 'decklink stduio 4k'}
+02/20/2024, 14:36:05.319187   {'param': '#this is comment...\nffmpeg -f lavfi -re -i "testsrc2=size=800x720" -pix_fmt yuv420p -c:v h264 -g 5 -f flv -an rtmp://127.0.0.1/live/enc3\n# This is comment 2', 'timetb': '03:00\n12:29', 'title': 'change title encoder 3'}
+02/20/2024, 14:36:05.320185   {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00\n05:00', 'title': 'This is encoder4'}
+02/20/2024, 14:36:05.324776   Read preset from file...
+{'preset1': 'ffmpeg -f lavfi -re -i "testsrc2=size=800x720" -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n', 'preset2': 'ffmpeg -i lavfi 2', 'preset3': 'ffmpeg.exe -y -f dshow -r 29.97 -video_size 1920x1080 -rtbufsize 700M -framerate 29.97 -top 1 -pixel_format uyvy422 -sample_rate 48000 -sample_size 16 -channels 8 -i "video=Decklink Video Capture:audio=Decklink Audio Capture"  -timecode %time% -pix_fmt yuv422p -c:v mpeg2video -profile:v 0 -level:v 2 -b:v 50000k -maxrate 50000k -minrate 50000k -bufsize 20000k -flags +ildct+ilme -top 1 -g 15 -bf 2 -color_primaries 1 -color_trc 1 -colorspace 1 -filter_complex "[0:0]setfield=tff;channelsplit=channel_layout=8" -acodec pcm_s16le "%mytimestamp%_XDCAM_50Mbps_8CH.mxf"\n\n\nffmpeg.exe -y -f dshow -r 29.97 -video_size 1920x1080 -rtbufsize 700M -framerate 29.97 -top 1 -pixel_format uyvy422 -sample_rate 48000 -sample_size 16 -channels 2 -i "video=Decklink Video Capture:audio=Decklink Audio Capture"  -timecode %time% -pix_fmt yuv422p -map [v2] -c:v mpeg2video -profile:v 0 -level:v 2 -b:v 11000k -bf 2 -g 15 -filter_complex "[0:0]yadif=0:-1:0[v1];[v1]scale=1280:720[v2];channelsplit=channel_layout=2[MA:0][MA:1];[MA:0][MA:1]amerge[a1]" -map [a1] -acodec mp3 -ac 2 "%mytimestamp%_MPEG2_2_channel.ts"', 'preset4': '\n#ffmpeg.exe -y -f dshow -video_size 1920x1080 -rtbufsize 700M -framerate 29.97 -top 1 -pixel_format uyvy422 -use_wallclock_as_timestamps 1 -sample_rate 48000 -sample_size 16 -channels 2 -i "video=Decklink Video Capture:audio=Decklink Audio Capture"  -timecode %time% -pix_fmt yuv422p -map [v2] -c:v libx264 -preset fast -crf 28 -filter_complex "[0:0]yadif=0:-1:0[v1];[v1]scale=1280:720[v2];channelsplit=channel_layout=2[MA:0][MA:1];[MA:0][MA:1]amerge[a1]" -map [a1] -acodec mp3 -ac 2 -f mpegts "%mytimestamp%_x264_stereo.ts"\n\n\nffmpeg -format_code Hi59 -f decklink  -i \'DeckLink Studio 4K\' -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -an -f flv rtmp://127.0.0.1/live/enc2', 'preset5': 'ffmpeg2016.exe -f dshow -r ntsc -video_size 1920x1080 -rtbufsize 300M -framerate ntsc -top 1 -pixel_format uyvy422 -sample_rate 48000 -sample_size 16 -channels 2 -i "video=Decklink Video Capture:audio=Decklink Audio Capture" -pix_fmt yuv420p -c:v libx264 -crf 25 -preset:v veryfast -tune zerolatency -filter_complex "[0:0]yadif=0:-1:0[v1];[v1]scale=1280:720;channelsplit=channel_layout=2" -c:a aac -ab 128k -ac 2 -f flv rtmp://10.10.108.221:1935/sbsonair', 'preset6': 'ffmpeg -i test6', 'preset7': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n# This is comment 2\n#ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n#ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n#ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n', 'preset8': 'ffmpeg -i test8', 'preset9': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=800x720 -c:v mpeg2video -f mpegts -an http://127.0.0.1:8000/live1\n# This is comment 2', 'preset10': 'ffmpeg -f dshow -list_devices 1 -i dummy -f null'}
+02/20/2024, 14:36:10.128699   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:36:10.139428   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:36:10.139428   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:36:10.139428   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:36:10.741529   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:36:10.741529   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:36:10.741529   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:36:10.741529   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:36:11.005798   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:36:11.009473   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:36:11.009473   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:36:11.009473   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:36:11.276243   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:36:11.276243   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:36:11.276243   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:36:11.276243   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:36:11.594775   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:36:11.605446   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:36:11.608454   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:36:11.608454   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:36:11.805481   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:36:11.810238   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:36:11.810238   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:36:11.810238   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:36:39.262250   decode protcol ->  {'cmd': 'startall', 'data': {}}
+02/20/2024, 14:36:39.262250   enc1 start encoder from command..
+02/20/2024, 14:36:39.262250   enc2 start encoder from command..
+02/20/2024, 14:36:39.262250   [enc1 run with param] ==> 
+ffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1/live/enc1
+02/20/2024, 14:36:39.262250   enc3 start encoder from command..
+02/20/2024, 14:36:39.262250   [enc2 run with param] ==> 
+ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2
+02/20/2024, 14:36:39.262250   enc4 start encoder from command..
+02/20/2024, 14:36:39.262250   [enc3 run with param] ==> 
+ffmpeg -f lavfi -re -i "testsrc2=size=800x720" -pix_fmt yuv420p -c:v h264 -g 5 -f flv -an rtmp://127.0.0.1/live/enc3
+02/20/2024, 14:36:39.262250   [enc4 run with param] ==> 
+ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4
+02/20/2024, 14:36:39.297027   [enc3stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:36:39.299022   [enc4stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:36:39.412187   [enc2stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:36:40.992351   [enc1stat] ## Duration detected....  00:00:00.00
+02/20/2024, 14:36:43.848799   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:36:43.852138   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:36:43.852138   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:36:43.852138   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:36:44.281776   [enc4stat] Watch dog pid is 11536/frame=   86 fps= 21 q=8.0 size=     278kB time=00:00:03.36 bitrate= 677.6kbits/s speed=0.811x
+02/20/2024, 14:36:44.281776   [enc3stat] Watch dog pid is 15092/frame=   86 fps= 21 q=28.0 size=     935kB time=00:00:03.36 bitrate=2280.6kbits/s speed=0.812x
+02/20/2024, 14:36:44.282690   [enc1stat] Watch dog pid is 14220/frame=  119 fps= 46 q=-1.0 size=    1781kB time=00:00:04.08 bitrate=3575.3kbits/s speed=1.57x
+02/20/2024, 14:36:44.281776   [enc2stat] Watch dog pid is 10344/frame=  124 fps= 30 q=24.0 size=    2470kB time=00:00:04.13 bitrate=4891.8kbits/s speed=1.01x
+02/20/2024, 14:36:47.288063   [enc4stat] Watch dog pid is 11536/frame=  164 fps= 23 q=4.0 size=     661kB time=00:00:06.48 bitrate= 835.6kbits/s speed=0.892x
+02/20/2024, 14:36:47.288063   [enc1stat] Watch dog pid is 14220/frame=  213 fps= 37 q=-1.0 size=    3215kB time=00:00:07.21 bitrate=3648.6kbits/s speed=1.26x
+02/20/2024, 14:36:47.289061   [enc3stat] Watch dog pid is 15092/frame=  164 fps= 23 q=25.0 size=    1803kB time=00:00:06.48 bitrate=2279.2kbits/s speed=0.891x
+02/20/2024, 14:36:47.289061   [enc2stat] Watch dog pid is 10344/frame=  216 fps= 30 q=24.0 size=    4621kB time=00:00:07.20 bitrate=5252.5kbits/s speed=   1x
+02/20/2024, 14:36:50.175555   decode protcol ->  {'cmd': 'allstop', 'data': {}}
+02/20/2024, 14:36:50.176552   [enc1]Stop encoder..
+02/20/2024, 14:36:50.177596   [enc2]Stop encoder..
+02/20/2024, 14:36:50.177596   [enc3]Stop encoder..
+02/20/2024, 14:36:50.178548   [enc4]Stop encoder..
+02/20/2024, 14:36:50.181598   [enc1stat] ffmpeg process exited with error code 1
+02/20/2024, 14:36:50.181598   [enc1 Finish encoder
+02/20/2024, 14:36:50.182537   [enc1] Finish encoder. escape from running loop
+02/20/2024, 14:36:50.206480   [enc3stat] ffmpeg process exited with error code 1
+02/20/2024, 14:36:50.206480   [enc3 Finish encoder
+02/20/2024, 14:36:50.207588   [enc3] Finish encoder. escape from running loop
+02/20/2024, 14:36:50.218606   [enc4stat] ffmpeg process exited with error code 1
+02/20/2024, 14:36:50.219603   [enc4 Finish encoder
+02/20/2024, 14:36:50.219603   [enc4] Finish encoder. escape from running loop
+02/20/2024, 14:36:50.240439   [enc2stat] ffmpeg process exited with error code 1
+02/20/2024, 14:36:50.240439   [enc2 Finish encoder
+02/20/2024, 14:36:50.241388   [enc2] Finish encoder. escape from running loop
+02/20/2024, 14:37:10.195451   decode protcol ->  {'cmd': 'startall', 'data': {}}
+02/20/2024, 14:37:10.195451   enc1 start encoder from command..
+02/20/2024, 14:37:10.195451   enc2 start encoder from command..
+02/20/2024, 14:37:10.195451   [enc1 run with param] ==> 
+ffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1/live/enc1
+02/20/2024, 14:37:10.195451   enc3 start encoder from command..
+02/20/2024, 14:37:10.195451   [enc2 run with param] ==> 
+ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2
+02/20/2024, 14:37:10.195451   enc4 start encoder from command..
+02/20/2024, 14:37:10.195451   [enc3 run with param] ==> 
+ffmpeg -f lavfi -re -i "testsrc2=size=800x720" -pix_fmt yuv420p -c:v h264 -g 5 -f flv -an rtmp://127.0.0.1/live/enc3
+02/20/2024, 14:37:10.204328   [enc4 run with param] ==> 
+ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4
+02/20/2024, 14:37:10.229143   [enc3stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:37:10.231138   [enc4stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:37:10.354505   [enc2stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:37:11.906392   [enc1stat] ## Duration detected....  00:00:00.00
+02/20/2024, 14:37:12.680490   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/20/2024, 14:37:12.680490   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/20/2024, 14:37:12.690846   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/20/2024, 14:37:12.691984   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/20/2024, 14:37:15.205423   [enc1stat] Watch dog pid is 11476/frame=  117 fps= 45 q=-1.0 size=    1725kB time=00:00:04.07 bitrate=3468.7kbits/s speed=1.57x
+02/20/2024, 14:37:15.206401   [enc2stat] Watch dog pid is 15552/frame=  123 fps= 30 q=23.0 size=    2404kB time=00:00:04.10 bitrate=4799.6kbits/s speed=1.01x
+02/20/2024, 14:37:15.208324   [enc3stat] Watch dog pid is 632/frame=   86 fps= 21 q=28.0 size=     935kB time=00:00:03.36 bitrate=2280.6kbits/s speed=0.812x
+02/20/2024, 14:37:15.209321   [enc4stat] Watch dog pid is 4788/frame=   86 fps= 21 q=8.0 size=     278kB time=00:00:03.36 bitrate= 677.6kbits/s speed=0.811x
+02/20/2024, 14:37:18.206467   [enc1stat] Watch dog pid is 11476/frame=  211 fps= 37 q=-1.0 size=    3203kB time=00:00:07.19 bitrate=3649.2kbits/s speed=1.26x
+02/20/2024, 14:37:18.207440   [enc2stat] Watch dog pid is 15552/frame=  216 fps= 30 q=25.0 size=    4486kB time=00:00:07.20 bitrate=5098.7kbits/s speed=   1x
+02/20/2024, 14:37:18.209458   [enc3stat] Watch dog pid is 632/frame=  164 fps= 23 q=25.0 size=    1803kB time=00:00:06.48 bitrate=2279.2kbits/s speed=0.891x
+02/20/2024, 14:37:18.210389   [enc4stat] Watch dog pid is 4788/frame=  164 fps= 23 q=4.0 size=     661kB time=00:00:06.48 bitrate= 835.6kbits/s speed=0.891x
+02/20/2024, 14:37:21.209227   [enc1stat] Watch dog pid is 11476/frame=  289 fps= 35 q=-1.0 size=    4298kB time=00:00:09.79 bitrate=3594.7kbits/s speed=1.18x
+02/20/2024, 14:37:21.209227   [enc2stat] Watch dog pid is 15552/frame=  309 fps= 30 q=24.0 size=    6375kB time=00:00:10.31 bitrate=5065.1kbits/s speed=   1x
+02/20/2024, 14:37:21.211150   [enc3stat] Watch dog pid is 632/frame=  242 fps= 23 q=28.0 size=    2669kB time=00:00:09.60 bitrate=2277.6kbits/s speed=0.924x
+02/20/2024, 14:37:21.212209   [enc4stat] Watch dog pid is 4788/frame=  242 fps= 23 q=4.0 size=    1079kB time=00:00:09.60 bitrate= 920.8kbits/s speed=0.925x
+02/20/2024, 14:37:24.210201   [enc2stat] Watch dog pid is 15552/frame=  385 fps= 30 q=23.0 size=    7823kB time=00:00:12.84 bitrate=4989.1kbits/s speed=   1x
+02/20/2024, 14:37:24.210201   [enc1stat] Watch dog pid is 11476/frame=  383 fps= 34 q=-1.0 size=    5664kB time=00:00:12.93 bitrate=3588.2kbits/s speed=1.13x
+02/20/2024, 14:37:24.211246   [enc3stat] Watch dog pid is 632/frame=  307 fps= 24 q=28.0 size=    3399kB time=00:00:12.20 bitrate=2282.2kbits/s speed=0.939x
+02/20/2024, 14:37:24.214322   [enc4stat] Watch dog pid is 4788/frame=  307 fps= 24 q=4.0 size=    1440kB time=00:00:12.20 bitrate= 967.3kbits/s speed=0.939x
+02/20/2024, 14:37:27.213162   [enc1stat] Watch dog pid is 11476/frame=  476 fps= 33 q=-1.0 size=    7047kB time=00:00:16.02 bitrate=3603.2kbits/s speed= 1.1x
+02/20/2024, 14:37:27.213162   [enc3stat] Watch dog pid is 632/frame=  385 fps= 24 q=28.0 size=    4260kB time=00:00:15.32 bitrate=2278.2kbits/s speed=0.952x
+02/20/2024, 14:37:27.215160   [enc4stat] Watch dog pid is 4788/frame=  385 fps= 24 q=2.0 size=    1871kB time=00:00:15.32 bitrate=1000.6kbits/s speed=0.951x
+02/20/2024, 14:37:30.216118   [enc1stat] Watch dog pid is 11476/frame=  568 fps= 32 q=-1.0 size=    8449kB time=00:00:19.07 bitrate=3628.9kbits/s speed=1.09x
+02/20/2024, 14:37:30.216118   [enc3stat] Watch dog pid is 632/frame=  463 fps= 24 q=28.0 size=    5134kB time=00:00:18.44 bitrate=2280.6kbits/s speed=0.959x
+02/20/2024, 14:37:30.216118   [enc2stat] Watch dog pid is 15552/frame=  569 fps= 30 q=26.0 size=   12021kB time=00:00:18.98 bitrate=5186.9kbits/s speed=   1x
+02/20/2024, 14:37:33.217818   [enc3stat] Watch dog pid is 632/frame=  541 fps= 24 q=28.0 size=    5991kB time=00:00:21.56 bitrate=2276.5kbits/s speed=0.965x
+02/20/2024, 14:37:33.218817   [enc1stat] Watch dog pid is 11476/frame=  658 fps= 32 q=-1.0 size=    9787kB time=00:00:22.10 bitrate=3626.7kbits/s speed=1.07x
+02/20/2024, 14:37:33.218817   [enc4stat] Watch dog pid is 4788/frame=  541 fps= 24 q=0.0 size=    2789kB time=00:00:21.56 bitrate=1059.5kbits/s speed=0.965x
+02/20/2024, 14:37:33.218817   [enc2stat] Watch dog pid is 15552/frame=  661 fps= 30 q=27.0 size=   14419kB time=00:00:22.05 bitrate=5355.6kbits/s speed=   1x
+02/20/2024, 14:37:36.219264   [enc3stat] Watch dog pid is 632/frame=  606 fps= 24 q=28.0 size=    6721kB time=00:00:24.16 bitrate=2279.0kbits/s speed=0.969x
+02/20/2024, 14:37:36.220261   [enc2stat] Watch dog pid is 15552/frame=  752 fps= 30 q=28.0 size=   16659kB time=00:00:25.09 bitrate=5438.8kbits/s speed=   1x
+02/20/2024, 14:37:36.220261   [enc4stat] Watch dog pid is 4788/frame=  606 fps= 24 q=0.0 size=    3182kB time=00:00:24.16 bitrate=1078.8kbits/s speed=0.969x
+02/20/2024, 14:37:36.220261   [enc1stat] Watch dog pid is 11476/frame=  751 fps= 32 q=-1.0 size=   11144kB time=00:00:25.19 bitrate=3623.4kbits/s speed=1.06x
+02/20/2024, 14:37:39.221110   [enc3stat] Watch dog pid is 632/frame=  684 fps= 24 q=25.0 size=    7597kB time=00:00:27.28 bitrate=2281.3kbits/s speed=0.972x
+02/20/2024, 14:37:39.222028   [enc4stat] Watch dog pid is 4788/frame=  684 fps= 24 q=0.0 size=    3654kB time=00:00:27.28 bitrate=1097.3kbits/s speed=0.972x
+02/20/2024, 14:37:39.222028   [enc2stat] Watch dog pid is 15552/frame=  844 fps= 30 q=30.0 size=   18634kB time=00:00:28.16 bitrate=5420.7kbits/s speed=   1x
+02/20/2024, 14:37:39.222028   [enc1stat] Watch dog pid is 11476/frame=  843 fps= 31 q=-1.0 size=   12544kB time=00:00:28.27 bitrate=3633.8kbits/s speed=1.06x
+02/20/2024, 14:37:42.222914   [enc3stat] Watch dog pid is 632/frame=  762 fps= 24 q=28.0 size=    8471kB time=00:00:30.40 bitrate=2282.7kbits/s speed=0.975x
+02/20/2024, 14:37:42.223912   [enc2stat] Watch dog pid is 15552/frame=  935 fps= 30 q=30.0 size=   20883kB time=00:00:31.19 bitrate=5483.5kbits/s speed=   1x
+02/20/2024, 14:37:42.223912   [enc1stat] Watch dog pid is 11476/frame=  919 fps= 31 q=-1.0 size=   13698kB time=00:00:30.81 bitrate=3641.6kbits/s speed=1.05x
+02/20/2024, 14:37:42.223912   [enc4stat] Watch dog pid is 4788/frame=  762 fps= 24 q=0.0 size=    4132kB time=00:00:30.40 bitrate=1113.4kbits/s speed=0.975x
+02/20/2024, 14:37:45.224686   [enc3stat] Watch dog pid is 632/frame=  840 fps= 24 q=28.0 size=    9333kB time=00:00:33.52 bitrate=2280.9kbits/s speed=0.977x
+02/20/2024, 14:37:45.225680   [enc4stat] Watch dog pid is 4788/frame=  840 fps= 24 q=0.0 size=    4589kB time=00:00:33.52 bitrate=1121.5kbits/s speed=0.977x
+02/20/2024, 14:37:45.225680   [enc2stat] Watch dog pid is 15552/frame= 1029 fps= 30 q=28.0 size=   22639kB time=00:00:34.33 bitrate=5401.6kbits/s speed=   1x
+02/20/2024, 14:37:45.225680   [enc1stat] Watch dog pid is 11476/frame= 1011 fps= 31 q=-1.0 size=   14915kB time=00:00:33.88 bitrate=3605.8kbits/s speed=1.05x
+02/20/2024, 14:37:48.226267   [enc3stat] Watch dog pid is 632/frame=  905 fps= 25 q=28.0 size=   10068kB time=00:00:36.12 bitrate=2283.4kbits/s speed=0.979x
+02/20/2024, 14:37:48.227265   [enc1stat] Watch dog pid is 11476/frame= 1103 fps= 31 q=-1.0 size=   16185kB time=00:00:36.95 bitrate=3587.8kbits/s speed=1.04x
+02/20/2024, 14:37:48.227265   [enc4stat] Watch dog pid is 4788/frame=  918 fps= 25 q=0.0 size=    5065kB time=00:00:36.64 bitrate=1132.5kbits/s speed=0.979x
+02/20/2024, 14:37:48.227265   [enc2stat] Watch dog pid is 15552/frame= 1106 fps= 30 q=28.0 size=   23889kB time=00:00:36.90 bitrate=5303.0kbits/s speed=   1x
+02/20/2024, 14:37:51.231187   [enc1stat] Watch dog pid is 11476/frame= 1197 fps= 31 q=-1.0 size=   17669kB time=00:00:40.09 bitrate=3610.5kbits/s speed=1.04x
+02/20/2024, 14:37:51.232185   [enc3stat] Watch dog pid is 632/frame=  983 fps= 25 q=28.0 size=   10934kB time=00:00:39.24 bitrate=2282.6kbits/s speed=0.98x
+02/20/2024, 14:37:51.232185   [enc2stat] Watch dog pid is 15552/frame= 1197 fps= 30 q=29.0 size=   25597kB time=00:00:39.94 bitrate=5250.1kbits/s speed=   1x
+02/20/2024, 14:37:51.232185   [enc4stat] Watch dog pid is 4788/frame=  983 fps= 25 q=0.0 size=    5455kB time=00:00:39.24 bitrate=1138.8kbits/s speed=0.98x
+02/20/2024, 14:37:54.232711   [enc1stat] Watch dog pid is 11476/frame= 1289 fps= 31 q=-1.0 size=   19022kB time=00:00:43.16 bitrate=3610.5kbits/s speed=1.04x
+02/20/2024, 14:37:54.233665   [enc3stat] Watch dog pid is 632/frame= 1061 fps= 25 q=28.0 size=   11782kB time=00:00:42.36 bitrate=2278.4kbits/s speed=0.982x
+02/20/2024, 14:37:54.233665   [enc4stat] Watch dog pid is 4788/frame= 1061 fps= 25 q=0.0 size=    5915kB time=00:00:42.36 bitrate=1144.0kbits/s speed=0.982x
+02/20/2024, 14:37:54.233665   [enc2stat] Watch dog pid is 15552/frame= 1289 fps= 30 q=27.0 size=   27125kB time=00:00:43.01 bitrate=5166.5kbits/s speed=   1x
+02/20/2024, 14:37:57.234300   [enc1stat] Watch dog pid is 11476/frame= 1382 fps= 31 q=-1.0 size=   20314kB time=00:00:46.25 bitrate=3598.0kbits/s speed=1.03x
+02/20/2024, 14:37:57.235251   [enc4stat] Watch dog pid is 4788/frame= 1139 fps= 25 q=0.0 size=    6389kB time=00:00:45.48 bitrate=1150.8kbits/s speed=0.983x
+02/20/2024, 14:37:57.235251   [enc2stat] Watch dog pid is 15552/frame= 1379 fps= 30 q=25.0 size=   28304kB time=00:00:46.01 bitrate=5039.2kbits/s speed=   1x
+02/20/2024, 14:37:57.235251   [enc3stat] Watch dog pid is 632/frame= 1139 fps= 25 q=25.0 size=   12660kB time=00:00:45.48 bitrate=2280.4kbits/s speed=0.983x
+02/20/2024, 14:38:00.235746   [enc1stat] Watch dog pid is 11476/frame= 1461 fps= 31 q=-1.0 size=   21589kB time=00:00:48.89 bitrate=3616.9kbits/s speed=1.03x
+02/20/2024, 14:38:00.236696   [enc2stat] Watch dog pid is 15552/frame= 1470 fps= 30 q=26.0 size=   29688kB time=00:00:49.01 bitrate=4961.8kbits/s speed=   1x
+02/20/2024, 14:38:00.236696   [enc3stat] Watch dog pid is 632/frame= 1217 fps= 25 q=28.0 size=   13528kB time=00:00:48.60 bitrate=2280.2kbits/s speed=0.984x
+02/20/2024, 14:38:00.236696   [enc4stat] Watch dog pid is 4788/frame= 1217 fps= 25 q=0.0 size=    6865kB time=00:00:48.60 bitrate=1157.2kbits/s speed=0.984x
+02/20/2024, 14:38:03.237141   [enc1stat] Watch dog pid is 11476/frame= 1556 fps= 31 q=-1.0 size=   23042kB time=00:00:52.06 bitrate=3625.2kbits/s speed=1.03x
+02/20/2024, 14:38:03.238120   [enc3stat] Watch dog pid is 632/frame= 1282 fps= 25 q=28.0 size=   14247kB time=00:00:51.20 bitrate=2279.6kbits/s speed=0.985x
+02/20/2024, 14:38:03.238120   [enc2stat] Watch dog pid is 15552/frame= 1561 fps= 30 q=25.0 size=   31364kB time=00:00:52.08 bitrate=4933.0kbits/s speed=   1x
+02/20/2024, 14:38:03.238120   [enc4stat] Watch dog pid is 4788/frame= 1282 fps= 25 q=0.0 size=    7254kB time=00:00:51.20 bitrate=1160.6kbits/s speed=0.985x
+02/20/2024, 14:38:06.238485   [enc1stat] Watch dog pid is 11476/frame= 1649 fps= 31 q=-1.0 size=   24493kB time=00:00:55.17 bitrate=3636.7kbits/s speed=1.03x
+02/20/2024, 14:38:06.239513   [enc3stat] Watch dog pid is 632/frame= 1360 fps= 25 q=28.0 size=   15107kB time=00:00:54.32 bitrate=2278.2kbits/s speed=0.986x
+02/20/2024, 14:38:06.239513   [enc2stat] Watch dog pid is 15552/frame= 1653 fps= 30 q=25.0 size=   32960kB time=00:00:55.15 bitrate=4895.5kbits/s speed=   1x
+02/20/2024, 14:38:06.239513   [enc4stat] Watch dog pid is 4788/frame= 1360 fps= 25 q=0.0 size=    7715kB time=00:00:54.32 bitrate=1163.6kbits/s speed=0.986x
+02/20/2024, 14:38:09.240240   [enc1stat] Watch dog pid is 11476/frame= 1742 fps= 31 q=-1.0 size=   25832kB time=00:00:58.26 bitrate=3632.2kbits/s speed=1.03x
+02/20/2024, 14:38:09.241221   [enc3stat] Watch dog pid is 632/frame= 1438 fps= 25 q=28.0 size=   15979kB time=00:00:57.44 bitrate=2278.9kbits/s speed=0.987x
+02/20/2024, 14:38:09.241221   [enc4stat] Watch dog pid is 4788/frame= 1438 fps= 25 q=0.0 size=    8189kB time=00:00:57.44 bitrate=1167.9kbits/s speed=0.987x
+02/20/2024, 14:38:09.241221   [enc2stat] Watch dog pid is 15552/frame= 1745 fps= 30 q=25.0 size=   34763kB time=00:00:58.22 bitrate=4891.0kbits/s speed=   1x
+02/20/2024, 14:38:12.241481   [enc1stat] Watch dog pid is 11476/frame= 1821 fps= 31 q=-1.0 size=   27023kB time=00:01:00.91 bitrate=3634.4kbits/s speed=1.03x
+02/20/2024, 14:38:12.242479   [enc4stat] Watch dog pid is 4788/frame= 1516 fps= 25 q=0.0 size=    8650kB time=00:01:00.56 bitrate=1170.0kbits/s speed=0.987x
+02/20/2024, 14:38:12.242479   [enc2stat] Watch dog pid is 15552/frame= 1835 fps= 30 q=25.0 size=   36551kB time=00:01:01.22 bitrate=4890.4kbits/s speed=   1x
+02/20/2024, 14:38:12.242479   [enc3stat] Watch dog pid is 632/frame= 1516 fps= 25 q=28.0 size=   16832kB time=00:01:00.56 bitrate=2276.9kbits/s speed=0.987x
+02/20/2024, 14:38:15.242864   [enc1stat] Watch dog pid is 11476/frame= 1915 fps= 31 q=-1.0 size=   28397kB time=00:01:04.04 bitrate=3632.1kbits/s speed=1.02x
+02/20/2024, 14:38:15.243908   [enc2stat] Watch dog pid is 15552/frame= 1926 fps= 30 q=25.0 size=   38435kB time=00:01:04.26 bitrate=4899.5kbits/s speed=   1x
+02/20/2024, 14:38:15.244062   [enc3stat] Watch dog pid is 632/frame= 1581 fps= 25 q=28.0 size=   17560kB time=00:01:03.16 bitrate=2277.5kbits/s speed=0.988x
+02/20/2024, 14:38:15.244015   [enc4stat] Watch dog pid is 4788/frame= 1581 fps= 25 q=0.0 size=    9038kB time=00:01:03.16 bitrate=1172.3kbits/s speed=0.988x
+02/20/2024, 14:38:18.244228   [enc1stat] Watch dog pid is 11476/frame= 2008 fps= 31 q=-1.0 size=   29738kB time=00:01:07.13 bitrate=3628.7kbits/s speed=1.02x
+02/20/2024, 14:38:18.244228   [enc2stat] Watch dog pid is 15552/frame= 2016 fps= 30 q=25.0 size=   40150kB time=00:01:07.26 bitrate=4889.5kbits/s speed=   1x
+02/20/2024, 14:38:18.245230   [enc4stat] Watch dog pid is 4788/frame= 1659 fps= 25 q=0.0 size=    9516kB time=00:01:06.28 bitrate=1176.2kbits/s speed=0.988x
+02/20/2024, 14:38:18.245360   [enc3stat] Watch dog pid is 632/frame= 1659 fps= 25 q=25.0 size=   18426kB time=00:01:06.28 bitrate=2277.3kbits/s speed=0.988x
+02/20/2024, 14:38:21.245508   [enc1stat] Watch dog pid is 11476/frame= 2100 fps= 31 q=-1.0 size=   31184kB time=00:01:10.20 bitrate=3638.6kbits/s speed=1.02x
+02/20/2024, 14:38:21.246608   [enc4stat] Watch dog pid is 4788/frame= 1737 fps= 25 q=0.0 size=    9990kB time=00:01:09.40 bitrate=1179.2kbits/s speed=0.989x
+02/20/2024, 14:38:21.246608   [enc2stat] Watch dog pid is 15552/frame= 2109 fps= 30 q=24.0 size=   41867kB time=00:01:10.37 bitrate=4873.8kbits/s speed=   1x
+02/20/2024, 14:38:21.247341   [enc3stat] Watch dog pid is 632/frame= 1737 fps= 25 q=28.0 size=   19300kB time=00:01:09.40 bitrate=2278.2kbits/s speed=0.989x
+02/20/2024, 14:38:24.246684   [enc1stat] Watch dog pid is 11476/frame= 2177 fps= 31 q=-1.0 size=   32306kB time=00:01:12.79 bitrate=3635.8kbits/s speed=1.02x
+02/20/2024, 14:38:24.247730   [enc4stat] Watch dog pid is 4788/frame= 1815 fps= 25 q=0.0 size=   10450kB time=00:01:12.52 bitrate=1180.5kbits/s speed=0.989x
+02/20/2024, 14:38:24.247730   [enc2stat] Watch dog pid is 15552/frame= 2185 fps= 30 q=24.0 size=   43439kB time=00:01:12.90 bitrate=4881.0kbits/s speed=   1x
+02/20/2024, 14:38:24.247730   [enc3stat] Watch dog pid is 632/frame= 1815 fps= 25 q=28.0 size=   20161kB time=00:01:12.52 bitrate=2277.5kbits/s speed=0.989x
+02/20/2024, 14:38:27.249723   [enc4stat] Watch dog pid is 4788/frame= 1893 fps= 25 q=0.0 size=   10925kB time=00:01:15.64 bitrate=1183.2kbits/s speed=0.99x
+02/20/2024, 14:38:27.249723   [enc2stat] Watch dog pid is 15552/frame= 2275 fps= 30 q=24.0 size=   45110kB time=00:01:15.90 bitrate=4868.2kbits/s speed=   1x
+02/20/2024, 14:38:27.249723   [enc1stat] Watch dog pid is 11476/frame= 2271 fps= 31 q=-1.0 size=   33658kB time=00:01:15.94 bitrate=3630.5kbits/s speed=1.02x
+02/20/2024, 14:38:30.252928   [enc1stat] Watch dog pid is 11476/frame= 2364 fps= 30 q=-1.0 size=   35053kB time=00:01:19.02 bitrate=3633.5kbits/s speed=1.02x
+02/20/2024, 14:38:30.252928   [enc3stat] Watch dog pid is 632/frame= 1958 fps= 25 q=28.0 size=   21767kB time=00:01:18.24 bitrate=2279.1kbits/s speed=0.99x
+02/20/2024, 14:38:30.252928   [enc2stat] Watch dog pid is 15552/frame= 2367 fps= 30 q=24.0 size=   47050kB time=00:01:18.97 bitrate=4880.2kbits/s speed=   1x
+02/20/2024, 14:38:33.255246   [enc1stat] Watch dog pid is 11476/frame= 2456 fps= 30 q=-1.0 size=   36396kB time=00:01:22.09 bitrate=3631.7kbits/s speed=1.02x
+02/20/2024, 14:38:33.255246   [enc4stat] Watch dog pid is 4788/frame= 2036 fps= 25 q=0.0 size=   11773kB time=00:01:21.36 bitrate=1185.4kbits/s speed=0.99x
+02/20/2024, 14:38:33.255246   [enc2stat] Watch dog pid is 15552/frame= 2458 fps= 30 q=24.0 size=   48897kB time=00:01:22.01 bitrate=4884.1kbits/s speed=   1x
+02/20/2024, 14:38:33.255246   [enc3stat] Watch dog pid is 632/frame= 2036 fps= 25 q=28.0 size=   22623kB time=00:01:21.36 bitrate=2277.9kbits/s speed=0.99x
+02/20/2024, 14:38:36.257297   [enc1stat] Watch dog pid is 11476/frame= 2550 fps= 30 q=-1.0 size=   37831kB time=00:01:25.20 bitrate=3637.3kbits/s speed=1.02x
+02/20/2024, 14:38:36.258299   [enc3stat] Watch dog pid is 632/frame= 2114 fps= 25 q=25.0 size=   23502kB time=00:01:24.48 bitrate=2278.9kbits/s speed=0.991x
+02/20/2024, 14:38:36.258299   [enc4stat] Watch dog pid is 4788/frame= 2114 fps= 25 q=0.0 size=   12250kB time=00:01:24.48 bitrate=1187.9kbits/s speed=0.991x
+02/20/2024, 14:38:36.258299   [enc2stat] Watch dog pid is 15552/frame= 2550 fps= 30 q=25.0 size=   50569kB time=00:01:25.08 bitrate=4868.8kbits/s speed=   1x
+02/20/2024, 14:38:39.258660   [enc1stat] Watch dog pid is 11476/frame= 2641 fps= 30 q=-1.0 size=   39189kB time=00:01:28.25 bitrate=3637.6kbits/s speed=1.02x
+02/20/2024, 14:38:39.259660   [enc4stat] Watch dog pid is 4788/frame= 2192 fps= 25 q=0.0 size=   12725kB time=00:01:27.60 bitrate=1190.0kbits/s speed=0.991x
+02/20/2024, 14:38:39.259660   [enc3stat] Watch dog pid is 632/frame= 2192 fps= 25 q=28.0 size=   24384kB time=00:01:27.60 bitrate=2280.3kbits/s speed=0.991x
+02/20/2024, 14:38:39.260654   [enc2stat] Watch dog pid is 15552/frame= 2640 fps= 30 q=24.0 size=   52256kB time=00:01:28.08 bitrate=4859.7kbits/s speed=   1x
+02/20/2024, 14:38:42.260021   [enc1stat] Watch dog pid is 11476/frame= 2719 fps= 30 q=-1.0 size=   40324kB time=00:01:30.85 bitrate=3635.7kbits/s speed=1.02x
+02/20/2024, 14:38:42.261108   [enc4stat] Watch dog pid is 4788/frame= 2257 fps= 25 q=0.0 size=   13118kB time=00:01:30.20 bitrate=1191.4kbits/s speed=0.991x
+02/20/2024, 14:38:42.261108   [enc3stat] Watch dog pid is 632/frame= 2257 fps= 25 q=28.0 size=   25093kB time=00:01:30.20 bitrate=2278.9kbits/s speed=0.991x
+02/20/2024, 14:38:42.261108   [enc2stat] Watch dog pid is 15552/frame= 2730 fps= 30 q=24.0 size=   54128kB time=00:01:31.09 bitrate=4867.9kbits/s speed=   1x
+02/20/2024, 14:38:45.262039   [enc1stat] Watch dog pid is 11476/frame= 2812 fps= 30 q=-1.0 size=   41702kB time=00:01:33.97 bitrate=3635.1kbits/s speed=1.02x
+02/20/2024, 14:38:45.262965   [enc3stat] Watch dog pid is 632/frame= 2335 fps= 25 q=28.0 size=   25967kB time=00:01:33.32 bitrate=2279.5kbits/s speed=0.992x
+02/20/2024, 14:38:45.262965   [enc2stat] Watch dog pid is 15552/frame= 2820 fps= 30 q=24.0 size=   55792kB time=00:01:34.09 bitrate=4857.4kbits/s speed=   1x
+02/20/2024, 14:38:45.262965   [enc4stat] Watch dog pid is 4788/frame= 2335 fps= 25 q=0.0 size=   13574kB time=00:01:33.32 bitrate=1191.6kbits/s speed=0.992x
+02/20/2024, 14:38:48.263469   [enc1stat] Watch dog pid is 11476/frame= 2904 fps= 30 q=-1.0 size=   43049kB time=00:01:37.04 bitrate=3633.9kbits/s speed=1.02x
+02/20/2024, 14:38:48.264467   [enc3stat] Watch dog pid is 632/frame= 2413 fps= 25 q=28.0 size=   26850kB time=00:01:36.44 bitrate=2280.7kbits/s speed=0.992x
+02/20/2024, 14:38:48.264467   [enc4stat] Watch dog pid is 4788/frame= 2413 fps= 25 q=0.0 size=   14052kB time=00:01:36.44 bitrate=1193.6kbits/s speed=0.992x
+02/20/2024, 14:38:48.264467   [enc2stat] Watch dog pid is 15552/frame= 2910 fps= 30 q=23.0 size=   57243kB time=00:01:37.09 bitrate=4829.5kbits/s speed=   1x
+02/20/2024, 14:38:51.265429   [enc1stat] Watch dog pid is 11476/frame= 2997 fps= 30 q=-1.0 size=   44417kB time=00:01:40.11 bitrate=3634.4kbits/s speed=1.02x
+02/20/2024, 14:38:51.266426   [enc2stat] Watch dog pid is 15552/frame= 3001 fps= 30 q=23.0 size=   59035kB time=00:01:40.13 bitrate=4829.7kbits/s speed=   1x
+02/20/2024, 14:38:51.266426   [enc4stat] Watch dog pid is 4788/frame= 2491 fps= 25 q=0.0 size=   14510kB time=00:01:39.56 bitrate=1193.9kbits/s speed=0.992x
+02/20/2024, 14:38:54.267356   [enc1stat] Watch dog pid is 11476/frame= 3089 fps= 30 q=-1.0 size=   45896kB time=00:01:43.22 bitrate=3642.5kbits/s speed=1.01x
+02/20/2024, 14:38:54.268307   [enc4stat] Watch dog pid is 4788/frame= 2569 fps= 25 q=0.0 size=   14987kB time=00:01:42.68 bitrate=1195.7kbits/s speed=0.992x
+02/20/2024, 14:38:54.268307   [enc2stat] Watch dog pid is 15552/frame= 3094 fps= 30 q=23.0 size=   60812kB time=00:01:43.23 bitrate=4825.5kbits/s speed=   1x
+02/20/2024, 14:38:54.268307   [enc3stat] Watch dog pid is 632/frame= 2569 fps= 25 q=25.0 size=   28586kB time=00:01:42.68 bitrate=2280.6kbits/s speed=0.992x
+02/20/2024, 14:38:57.268821   [enc1stat] Watch dog pid is 11476/frame= 3167 fps= 30 q=-1.0 size=   47055kB time=00:01:45.82 bitrate=3642.7kbits/s speed=1.01x
+02/20/2024, 14:38:57.269819   [enc3stat] Watch dog pid is 632/frame= 2634 fps= 25 q=25.0 size=   29301kB time=00:01:45.28 bitrate=2280.0kbits/s speed=0.993x
+02/20/2024, 14:38:57.269819   [enc4stat] Watch dog pid is 4788/frame= 2634 fps= 25 q=0.0 size=   15378kB time=00:01:45.28 bitrate=1196.6kbits/s speed=0.993x
+02/20/2024, 14:38:57.269819   [enc2stat] Watch dog pid is 15552/frame= 3185 fps= 30 q=24.0 size=   63214kB time=00:01:46.27 bitrate=4872.8kbits/s speed=   1x
+02/20/2024, 14:39:00.270776   [enc1stat] Watch dog pid is 11476/frame= 3259 fps= 30 q=-1.0 size=   48368kB time=00:01:48.88 bitrate=3639.0kbits/s speed=1.01x
+02/20/2024, 14:39:00.271774   [enc2stat] Watch dog pid is 15552/frame= 3277 fps= 30 q=24.0 size=   65919kB time=00:01:49.34 bitrate=4938.7kbits/s speed=   1x
+02/20/2024, 14:39:00.271774   [enc4stat] Watch dog pid is 4788/frame= 2712 fps= 25 q=0.0 size=   15858kB time=00:01:48.40 bitrate=1198.4kbits/s speed=0.993x
+02/20/2024, 14:39:00.271774   [enc3stat] Watch dog pid is 632/frame= 2712 fps= 25 q=28.0 size=   30170kB time=00:01:48.40 bitrate=2280.0kbits/s speed=0.993x
+02/20/2024, 14:39:03.271861   [enc1stat] Watch dog pid is 11476/frame= 3349 fps= 30 q=-1.0 size=   49706kB time=00:01:51.91 bitrate=3638.4kbits/s speed=1.01x
+02/20/2024, 14:39:03.272859   [enc2stat] Watch dog pid is 15552/frame= 3352 fps= 30 q=23.0 size=   67526kB time=00:01:51.84 bitrate=4945.9kbits/s speed=   1x
+02/20/2024, 14:39:03.272859   [enc4stat] Watch dog pid is 4788/frame= 2790 fps= 25 q=0.0 size=   16316kB time=00:01:51.52 bitrate=1198.6kbits/s speed=0.993x
+02/20/2024, 14:39:03.272859   [enc3stat] Watch dog pid is 632/frame= 2790 fps= 25 q=28.0 size=   31033kB time=00:01:51.52 bitrate=2279.6kbits/s speed=0.993x
+02/20/2024, 14:39:06.274831   [enc1stat] Watch dog pid is 11476/frame= 3443 fps= 30 q=-1.0 size=   51084kB time=00:01:55.03 bitrate=3638.0kbits/s speed=1.01x
+02/20/2024, 14:39:06.274831   [enc3stat] Watch dog pid is 632/frame= 2868 fps= 25 q=28.0 size=   31910kB time=00:01:54.64 bitrate=2280.3kbits/s speed=0.993x
+02/20/2024, 14:39:06.274831   [enc4stat] Watch dog pid is 4788/frame= 2868 fps= 25 q=0.0 size=   16795kB time=00:01:54.64 bitrate=1200.1kbits/s speed=0.993x
+02/20/2024, 14:39:06.274831   [enc2stat] Watch dog pid is 15552/frame= 3445 fps= 30 q=25.0 size=   69748kB time=00:01:54.94 bitrate=4970.7kbits/s speed=   1x
+02/20/2024, 14:39:09.277695   [enc1stat] Watch dog pid is 11476/frame= 3536 fps= 30 q=-1.0 size=   52430kB time=00:01:58.12 bitrate=3636.1kbits/s speed=1.01x
+02/20/2024, 14:39:09.277695   [enc2stat] Watch dog pid is 15552/frame= 3537 fps= 30 q=25.0 size=   71900kB time=00:01:58.01 bitrate=4990.8kbits/s speed=   1x
+02/20/2024, 14:39:09.277695   [enc4stat] Watch dog pid is 4788/frame= 2933 fps= 25 q=0.0 size=   17185kB time=00:01:57.24 bitrate=1200.8kbits/s speed=0.993x
+02/20/2024, 14:39:12.280323   [enc4stat] Watch dog pid is 4788/frame= 3011 fps= 25 q=0.0 size=   17647kB time=00:02:00.36 bitrate=1201.1kbits/s speed=0.994x
+02/20/2024, 14:39:12.280323   [enc1stat] Watch dog pid is 11476/frame= 3629 fps= 30 q=-1.0 size=   53885kB time=00:02:01.23 bitrate=3641.0kbits/s speed=1.01x
+02/20/2024, 14:39:12.280323   [enc2stat] Watch dog pid is 15552/frame= 3629 fps= 30 q=25.0 size=   74330kB time=00:02:01.08 bitrate=5028.7kbits/s speed=   1x
+02/20/2024, 14:39:12.280323   [enc3stat] Watch dog pid is 632/frame= 3011 fps= 25 q=28.0 size=   33479kB time=00:02:00.36 bitrate=2278.6kbits/s speed=0.994x
+02/20/2024, 14:39:15.281561   [enc4stat] Watch dog pid is 4788/frame= 3089 fps= 25 q=0.0 size=   18122kB time=00:02:03.48 bitrate=1202.3kbits/s speed=0.994x
+02/20/2024, 14:39:15.282661   [enc2stat] Watch dog pid is 15552/frame= 3721 fps= 30 q=27.0 size=   76372kB time=00:02:04.15 bitrate=5039.1kbits/s speed=   1x
+02/20/2024, 14:39:15.282661   [enc3stat] Watch dog pid is 632/frame= 3089 fps= 25 q=25.0 size=   34360kB time=00:02:03.48 bitrate=2279.5kbits/s speed=0.994x
+02/20/2024, 14:39:15.282661   [enc1stat] Watch dog pid is 11476/frame= 3707 fps= 30 q=-1.0 size=   55013kB time=00:02:03.84 bitrate=3639.1kbits/s speed=1.01x
+02/20/2024, 14:39:18.282734   [enc4stat] Watch dog pid is 4788/frame= 3167 fps= 25 q=0.0 size=   18601kB time=00:02:06.60 bitrate=1203.7kbits/s speed=0.994x
+02/20/2024, 14:39:18.283735   [enc2stat] Watch dog pid is 15552/frame= 3813 fps= 30 q=25.0 size=   78257kB time=00:02:07.22 bitrate=5038.8kbits/s speed=   1x
+02/20/2024, 14:39:18.283735   [enc3stat] Watch dog pid is 632/frame= 3167 fps= 25 q=28.0 size=   35232kB time=00:02:06.60 bitrate=2279.8kbits/s speed=0.994x
+02/20/2024, 14:39:18.283735   [enc1stat] Watch dog pid is 11476/frame= 3801 fps= 30 q=-1.0 size=   56367kB time=00:02:06.97 bitrate=3636.5kbits/s speed=1.01x
+02/20/2024, 14:39:21.284821   [enc4stat] Watch dog pid is 4788/frame= 3232 fps= 25 q=0.0 size=   18991kB time=00:02:09.20 bitrate=1204.1kbits/s speed=0.994x
+02/20/2024, 14:39:21.284821   [enc2stat] Watch dog pid is 15552/frame= 3903 fps= 30 q=26.0 size=   80108kB time=00:02:10.23 bitrate=5039.1kbits/s speed=   1x
+02/20/2024, 14:39:21.284821   [enc1stat] Watch dog pid is 11476/frame= 3894 fps= 30 q=-1.0 size=   57730kB time=00:02:10.04 bitrate=3636.5kbits/s speed=1.01x
+02/20/2024, 14:39:21.285824   [enc3stat] Watch dog pid is 632/frame= 3232 fps= 25 q=28.0 size=   35947kB time=00:02:09.20 bitrate=2279.3kbits/s speed=0.994x
+02/20/2024, 14:39:24.287440   [enc4stat] Watch dog pid is 4788/frame= 3310 fps= 25 q=0.0 size=   19455kB time=00:02:12.32 bitrate=1204.5kbits/s speed=0.994x
+02/20/2024, 14:39:24.287440   [enc3stat] Watch dog pid is 632/frame= 3310 fps= 25 q=28.0 size=   36805kB time=00:02:12.32 bitrate=2278.6kbits/s speed=0.994x
+02/20/2024, 14:39:24.287440   [enc1stat] Watch dog pid is 11476/frame= 3986 fps= 30 q=-1.0 size=   59108kB time=00:02:13.15 bitrate=3636.6kbits/s speed=1.01x
+02/20/2024, 14:39:24.287440   [enc2stat] Watch dog pid is 15552/frame= 3993 fps= 30 q=25.0 size=   82144kB time=00:02:13.23 bitrate=5050.7kbits/s speed=   1x
+02/20/2024, 14:39:27.288455   [enc4stat] Watch dog pid is 4788/frame= 3388 fps= 25 q=0.0 size=   19930kB time=00:02:15.44 bitrate=1205.4kbits/s speed=0.994x
+02/20/2024, 14:39:27.289511   [enc3stat] Watch dog pid is 632/frame= 3388 fps= 25 q=28.0 size=   37671kB time=00:02:15.44 bitrate=2278.5kbits/s speed=0.994x
+02/20/2024, 14:39:27.289511   [enc2stat] Watch dog pid is 15552/frame= 4084 fps= 30 q=26.0 size=   84208kB time=00:02:16.26 bitrate=5062.3kbits/s speed=   1x
+02/20/2024, 14:39:27.289511   [enc1stat] Watch dog pid is 11476/frame= 4079 fps= 30 q=-1.0 size=   60557kB time=00:02:16.25 bitrate=3640.9kbits/s speed=1.01x
+02/20/2024, 14:39:30.291444   [enc2stat] Watch dog pid is 15552/frame= 4175 fps= 30 q=26.0 size=   86094kB time=00:02:19.30 bitrate=5062.8kbits/s speed=   1x
+02/20/2024, 14:39:30.291444   [enc4stat] Watch dog pid is 4788/frame= 3466 fps= 25 q=0.0 size=   20392kB time=00:02:18.56 bitrate=1205.6kbits/s speed=0.994x
+02/20/2024, 14:39:30.291444   [enc3stat] Watch dog pid is 632/frame= 3466 fps= 25 q=28.0 size=   38523kB time=00:02:18.56 bitrate=2277.6kbits/s speed=0.994x
+02/20/2024, 14:39:30.291444   [enc1stat] Watch dog pid is 11476/frame= 4170 fps= 30 q=-1.0 size=   61869kB time=00:02:19.29 bitrate=3638.7kbits/s speed=1.01x
+02/20/2024, 14:39:33.293780   [enc2stat] Watch dog pid is 15552/frame= 4266 fps= 30 q=25.0 size=   87903kB time=00:02:22.34 bitrate=5059.0kbits/s speed=   1x
+02/20/2024, 14:39:33.293780   [enc1stat] Watch dog pid is 11476/frame= 4247 fps= 30 q=-1.0 size=   63021kB time=00:02:21.84 bitrate=3639.6kbits/s speed=1.01x
+02/20/2024, 14:39:36.296385   [enc3stat] Watch dog pid is 632/frame= 3609 fps= 25 q=25.0 size=   40128kB time=00:02:24.28 bitrate=2278.4kbits/s speed=0.995x
+02/20/2024, 14:39:36.296385   [enc1stat] Watch dog pid is 11476/frame= 4342 fps= 30 q=-1.0 size=   64429kB time=00:02:25.02 bitrate=3639.3kbits/s speed=1.01x
+02/20/2024, 14:39:36.296385   [enc4stat] Watch dog pid is 4788/frame= 3609 fps= 25 q=0.0 size=   21262kB time=00:02:24.28 bitrate=1207.2kbits/s speed=0.995x
+02/20/2024, 14:39:36.296385   [enc2stat] Watch dog pid is 15552/frame= 4356 fps= 30 q=26.0 size=   89653kB time=00:02:25.34 bitrate=5053.1kbits/s speed=   1x
+02/20/2024, 14:39:39.297898   [enc3stat] Watch dog pid is 632/frame= 3687 fps= 25 q=28.0 size=   41004kB time=00:02:27.40 bitrate=2278.9kbits/s speed=0.995x
+02/20/2024, 14:39:39.298893   [enc2stat] Watch dog pid is 15552/frame= 4433 fps= 30 q=26.0 size=   91315kB time=00:02:27.91 bitrate=5057.3kbits/s speed=   1x
+02/20/2024, 14:39:39.298893   [enc4stat] Watch dog pid is 4788/frame= 3687 fps= 25 q=0.0 size=   21736kB time=00:02:27.40 bitrate=1208.0kbits/s speed=0.995x
+02/20/2024, 14:39:39.298893   [enc1stat] Watch dog pid is 11476/frame= 4437 fps= 30 q=-1.0 size=   65816kB time=00:02:28.18 bitrate=3638.6kbits/s speed=1.01x
+02/20/2024, 14:39:42.300262   [enc3stat] Watch dog pid is 632/frame= 3765 fps= 25 q=28.0 size=   41862kB time=00:02:30.52 bitrate=2278.3kbits/s speed=0.995x
+02/20/2024, 14:39:42.300262   [enc2stat] Watch dog pid is 15552/frame= 4525 fps= 30 q=25.0 size=   93279kB time=00:02:30.98 bitrate=5061.1kbits/s speed=   1x
+02/20/2024, 14:39:42.300262   [enc4stat] Watch dog pid is 4788/frame= 3765 fps= 25 q=0.0 size=   22199kB time=00:02:30.52 bitrate=1208.2kbits/s speed=0.995x
+02/20/2024, 14:39:42.300262   [enc1stat] Watch dog pid is 11476/frame= 4530 fps= 30 q=-1.0 size=   67204kB time=00:02:31.30 bitrate=3638.6kbits/s speed=1.01x
+02/20/2024, 14:39:45.301727   [enc1stat] Watch dog pid is 11476/frame= 4609 fps= 30 q=-1.0 size=   68374kB time=00:02:33.92 bitrate=3639.0kbits/s speed=1.01x
+02/20/2024, 14:39:45.301727   [enc3stat] Watch dog pid is 632/frame= 3843 fps= 25 q=28.0 size=   42729kB time=00:02:33.64 bitrate=2278.3kbits/s speed=0.995x
+02/20/2024, 14:39:45.302708   [enc2stat] Watch dog pid is 15552/frame= 4617 fps= 30 q=25.0 size=   94958kB time=00:02:34.05 bitrate=5049.5kbits/s speed=   1x
+02/20/2024, 14:39:45.302708   [enc4stat] Watch dog pid is 4788/frame= 3843 fps= 25 q=0.0 size=   22675kB time=00:02:33.64 bitrate=1209.0kbits/s speed=0.995x
+02/20/2024, 14:39:48.304487   [enc2stat] Watch dog pid is 15552/frame= 4709 fps= 30 q=25.0 size=   96619kB time=00:02:37.12 bitrate=5037.4kbits/s speed=   1x
+02/20/2024, 14:39:48.304487   [enc4stat] Watch dog pid is 4788/frame= 3908 fps= 25 q=0.0 size=   23070kB time=00:02:36.24 bitrate=1209.6kbits/s speed=0.995x
+02/20/2024, 14:39:48.304487   [enc3stat] Watch dog pid is 632/frame= 3908 fps= 25 q=28.0 size=   43460kB time=00:02:36.24 bitrate=2278.7kbits/s speed=0.995x
+02/20/2024, 14:39:48.304487   [enc1stat] Watch dog pid is 11476/frame= 4700 fps= 30 q=-1.0 size=   69746kB time=00:02:36.97 bitrate=3639.8kbits/s speed=1.01x
+02/20/2024, 14:39:51.306462   [enc3stat] Watch dog pid is 632/frame= 3986 fps= 25 q=28.0 size=   44321kB time=00:02:39.36 bitrate=2278.4kbits/s speed=0.995x
+02/20/2024, 14:39:51.306462   [enc2stat] Watch dog pid is 15552/frame= 4801 fps= 30 q=26.0 size=   98824kB time=00:02:40.19 bitrate=5053.7kbits/s speed=   1x
+02/20/2024, 14:39:51.307459   [enc1stat] Watch dog pid is 11476/frame= 4794 fps= 30 q=-1.0 size=   71112kB time=00:02:40.11 bitrate=3638.4kbits/s speed=1.01x
+02/20/2024, 14:39:51.307459   [enc4stat] Watch dog pid is 4788/frame= 3986 fps= 25 q=0.0 size=   23527kB time=00:02:39.36 bitrate=1209.4kbits/s speed=0.995x
+02/20/2024, 14:39:54.308252   [enc3stat] Watch dog pid is 632/frame= 4064 fps= 25 q=25.0 size=   45197kB time=00:02:42.48 bitrate=2278.8kbits/s speed=0.995x
+02/20/2024, 14:39:54.308252   [enc2stat] Watch dog pid is 15552/frame= 4894 fps= 30 q=26.0 size=  100718kB time=00:02:43.29 bitrate=5052.7kbits/s speed=   1x
+02/20/2024, 14:39:54.309204   [enc1stat] Watch dog pid is 11476/frame= 4888 fps= 30 q=-1.0 size=   72480kB time=00:02:43.24 bitrate=3637.3kbits/s speed=1.01x
+02/20/2024, 14:39:54.309204   [enc4stat] Watch dog pid is 4788/frame= 4064 fps= 25 q=0.0 size=   24007kB time=00:02:42.48 bitrate=1210.4kbits/s speed=0.995x
+02/20/2024, 14:39:57.309478   [enc3stat] Watch dog pid is 632/frame= 4142 fps= 25 q=28.0 size=   46062kB time=00:02:45.60 bitrate=2278.6kbits/s speed=0.995x
+02/20/2024, 14:39:57.310526   [enc2stat] Watch dog pid is 15552/frame= 4985 fps= 30 q=26.0 size=  102468kB time=00:02:46.33 bitrate=5046.6kbits/s speed=   1x
+02/20/2024, 14:39:57.310526   [enc4stat] Watch dog pid is 4788/frame= 4142 fps= 25 q=0.0 size=   24482kB time=00:02:45.60 bitrate=1211.1kbits/s speed=0.995x
+02/20/2024, 14:39:57.310526   [enc1stat] Watch dog pid is 11476/frame= 4981 fps= 30 q=-1.0 size=   73893kB time=00:02:46.33 bitrate=3639.2kbits/s speed=1.01x
+02/20/2024, 14:40:00.312212   [enc3stat] Watch dog pid is 632/frame= 4220 fps= 25 q=28.0 size=   46918kB time=00:02:48.72 bitrate=2278.0kbits/s speed=0.995x
+02/20/2024, 14:40:00.312212   [enc4stat] Watch dog pid is 4788/frame= 4220 fps= 25 q=0.0 size=   24944kB time=00:02:48.72 bitrate=1211.1kbits/s speed=0.995x
+02/20/2024, 14:40:00.312212   [enc2stat] Watch dog pid is 15552/frame= 5077 fps= 30 q=27.0 size=  104800kB time=00:02:49.40 bitrate=5067.9kbits/s speed=   1x
+02/20/2024, 14:40:00.312212   [enc1stat] Watch dog pid is 11476/frame= 5058 fps= 30 q=-1.0 size=   75091kB time=00:02:48.91 bitrate=3641.6kbits/s speed=1.01x
+02/20/2024, 14:40:03.314481   [enc3stat] Watch dog pid is 632/frame= 4285 fps= 25 q=28.0 size=   47653kB time=00:02:51.32 bitrate=2278.6kbits/s speed=0.995x
+
+02/20/2024, 14:40:03.314481   [enc1stat] Watch dog pid is 11476/frame= 5152 fps= 30 q=-1.0 size=   76238kB time=00:02:52.05 bitrate=3629.9kbits/s speed=1.01x
+02/20/2024, 14:40:03.314481   [enc4stat] Watch dog pid is 4788/frame= 4285 fps= 25 q=0.0 size=   25335kB time=00:02:51.32 bitrate=1211.4kbits/s speed=0.995x
+02/20/2024, 14:40:06.315969   [enc3stat] Watch dog pid is 632/frame= 4363 fps= 25 q=28.0 size=   48526kB time=00:02:54.44 bitrate=2278.9kbits/s speed=0.996x
+02/20/2024, 14:40:06.315969   [enc1stat] Watch dog pid is 11476/frame= 5246 fps= 30 q=-1.0 size=   77460kB time=00:02:55.19 bitrate=3622.0kbits/s speed=1.01x
+02/20/2024, 14:40:06.315969   [enc4stat] Watch dog pid is 4788/frame= 4363 fps= 25 q=0.0 size=   25814kB time=00:02:54.44 bitrate=1212.3kbits/s speed=0.995x
+02/20/2024, 14:40:06.315969   [enc2stat] Watch dog pid is 15552/frame= 5245 fps= 30 q=25.0 size=  107007kB time=00:02:55.00 bitrate=5008.9kbits/s speed=   1x
+02/20/2024, 14:40:09.317204   [enc3stat] Watch dog pid is 632/frame= 4441 fps= 25 q=28.0 size=   49379kB time=00:02:57.56 bitrate=2278.2kbits/s speed=0.996x
+02/20/2024, 14:40:09.317204   [enc4stat] Watch dog pid is 4788/frame= 4441 fps= 25 q=0.0 size=   26272kB time=00:02:57.56 bitrate=1212.1kbits/s speed=0.996x
+02/20/2024, 14:40:09.318208   [enc2stat] Watch dog pid is 15552/frame= 5337 fps= 30 q=24.0 size=  107777kB time=00:02:58.07 bitrate=4958.0kbits/s speed=   1x
+02/20/2024, 14:40:09.318208   [enc1stat] Watch dog pid is 11476/frame= 5341 fps= 30 q=-1.0 size=   79212kB time=00:02:58.34 bitrate=3638.4kbits/s speed=1.01x
+02/20/2024, 14:40:12.318770   [enc3stat] Watch dog pid is 632/frame= 4519 fps= 25 q=25.0 size=   50249kB time=00:03:00.68 bitrate=2278.3kbits/s speed=0.996x
+02/20/2024, 14:40:12.318770   [enc4stat] Watch dog pid is 4788/frame= 4519 fps= 25 q=0.0 size=   26750kB time=00:03:00.68 bitrate=1212.9kbits/s speed=0.996x
+02/20/2024, 14:40:12.319753   [enc2stat] Watch dog pid is 15552/frame= 5427 fps= 30 q=24.0 size=  108795kB time=00:03:01.08 bitrate=4921.8kbits/s speed=   1x
+02/20/2024, 14:40:12.319753   [enc1stat] Watch dog pid is 11476/frame= 5419 fps= 30 q=-1.0 size=   80380kB time=00:03:00.94 bitrate=3639.0kbits/s speed=1.01x
+02/20/2024, 14:40:15.320010   [enc4stat] Watch dog pid is 4788/frame= 4584 fps= 25 q=0.0 size=   27141kB time=00:03:03.28 bitrate=1213.1kbits/s speed=0.996x
+02/20/2024, 14:40:15.321007   [enc2stat] Watch dog pid is 15552/frame= 5520 fps= 30 q=23.0 size=  110234kB time=00:03:04.18 bitrate=4902.9kbits/s speed=   1x
+02/20/2024, 14:40:15.321007   [enc1stat] Watch dog pid is 11476/frame= 5514 fps= 30 q=-1.0 size=   81766kB time=00:03:04.13 bitrate=3637.7kbits/s speed=1.01x
+02/20/2024, 14:40:18.322266   [enc2stat] Watch dog pid is 15552/frame= 5612 fps= 30 q=23.0 size=  111744kB time=00:03:07.25 bitrate=4888.6kbits/s speed=   1x
+02/20/2024, 14:40:18.322266   [enc3stat] Watch dog pid is 632/frame= 4662 fps= 25 q=28.0 size=   51849kB time=00:03:06.40 bitrate=2278.7kbits/s speed=0.996x
+02/20/2024, 14:40:18.322266   [enc1stat] Watch dog pid is 11476/frame= 5608 fps= 30 q=-1.0 size=   83155kB time=00:03:07.24 bitrate=3638.1kbits/s speed=1.01x
+02/20/2024, 14:40:21.323692   [enc4stat] Watch dog pid is 4788/frame= 4740 fps= 25 q=0.0 size=   28080kB time=00:03:09.52 bitrate=1213.8kbits/s speed=0.996x
+02/20/2024, 14:40:21.323692   [enc1stat] Watch dog pid is 11476/frame= 5688 fps= 30 q=-1.0 size=   84397kB time=00:03:09.94 bitrate=3640.0kbits/s speed=1.01x
+02/20/2024, 14:40:21.324629   [enc2stat] Watch dog pid is 15552/frame= 5703 fps= 30 q=23.0 size=  113389kB time=00:03:10.29 bitrate=4881.4kbits/s speed=   1x
+02/20/2024, 14:40:21.323692   [enc3stat] Watch dog pid is 632/frame= 4740 fps= 25 q=28.0 size=   52710kB time=00:03:09.52 bitrate=2278.4kbits/s speed=0.996x
+02/20/2024, 14:40:24.326326   [enc4stat] Watch dog pid is 4788/frame= 4818 fps= 25 q=0.0 size=   28559kB time=00:03:12.64 bitrate=1214.5kbits/s speed=0.996x
+02/20/2024, 14:40:24.326326   [enc2stat] Watch dog pid is 15552/frame= 5794 fps= 30 q=23.0 size=  115256kB time=00:03:13.32 bitrate=4883.9kbits/s speed=   1x
+02/20/2024, 14:40:24.326326   [enc3stat] Watch dog pid is 632/frame= 4818 fps= 25 q=28.0 size=   53573kB time=00:03:12.64 bitrate=2278.2kbits/s speed=0.996x
+02/20/2024, 14:40:24.326326   [enc1stat] Watch dog pid is 11476/frame= 5778 fps= 30 q=-1.0 size=   85733kB time=00:03:12.96 bitrate=3639.7kbits/s speed=1.01x
+02/20/2024, 14:40:27.327695   [enc4stat] Watch dog pid is 4788/frame= 4883 fps= 25 q=0.0 size=   28949kB time=00:03:15.24 bitrate=1214.7kbits/s speed=0.996x
+02/20/2024, 14:40:27.328665   [enc2stat] Watch dog pid is 15552/frame= 5885 fps= 30 q=23.0 size=  116965kB time=00:03:16.36 bitrate=4879.6kbits/s speed=   1x
+02/20/2024, 14:40:27.328665   [enc3stat] Watch dog pid is 632/frame= 4883 fps= 25 q=28.0 size=   54304kB time=00:03:15.24 bitrate=2278.5kbits/s speed=0.996x
+02/20/2024, 14:40:27.328665   [enc1stat] Watch dog pid is 11476/frame= 5872 fps= 30 q=-1.0 size=   87097kB time=00:03:16.08 bitrate=3638.8kbits/s speed=1.01x
+02/20/2024, 14:40:30.329431   [enc4stat] Watch dog pid is 4788/frame= 4961 fps= 25 q=0.0 size=   29413kB time=00:03:18.36 bitrate=1214.7kbits/s speed=0.996x
+02/20/2024, 14:40:30.330428   [enc2stat] Watch dog pid is 15552/frame= 5975 fps= 30 q=24.0 size=  119265kB time=00:03:19.36 bitrate=4900.6kbits/s speed=   1x
+02/20/2024, 14:40:30.330428   [enc3stat] Watch dog pid is 632/frame= 4961 fps= 25 q=28.0 size=   55155kB time=00:03:18.36 bitrate=2277.8kbits/s speed=0.996x
+02/20/2024, 14:40:30.330428   [enc1stat] Watch dog pid is 11476/frame= 5966 fps= 30 q=-1.0 size=   88514kB time=00:03:19.21 bitrate=3639.8kbits/s speed=1.01x
+02/20/2024, 14:40:33.330443   [enc4stat] Watch dog pid is 4788/frame= 5039 fps= 25 q=0.0 size=   29888kB time=00:03:21.48 bitrate=1215.2kbits/s speed=0.996x
+02/20/2024, 14:40:33.332328   [enc3stat] Watch dog pid is 632/frame= 5039 fps= 25 q=25.0 size=   56030kB time=00:03:21.48 bitrate=2278.1kbits/s speed=0.996x
+02/20/2024, 14:40:33.332328   [enc1stat] Watch dog pid is 11476/frame= 6058 fps= 30 q=-1.0 size=   89935kB time=00:03:22.30 bitrate=3641.8kbits/s speed=1.01x
+02/20/2024, 14:40:33.332328   [enc2stat] Watch dog pid is 15552/frame= 6068 fps= 30 q=24.0 size=  121489kB time=00:03:22.46 bitrate=4915.5kbits/s speed=   1x
+02/20/2024, 14:40:36.334944   [enc1stat] Watch dog pid is 11476/frame= 6138 fps= 30 q=-1.0 size=   91061kB time=00:03:24.95 bitrate=3639.7kbits/s speed=1.01x
+02/20/2024, 14:40:36.334944   [enc2stat] Watch dog pid is 15552/frame= 6143 fps= 30 q=23.0 size=  123326kB time=00:03:24.97 bitrate=4928.9kbits/s speed=   1x
+02/20/2024, 14:40:36.334944   [enc3stat] Watch dog pid is 632/frame= 5117 fps= 25 q=28.0 size=   56896kB time=00:03:24.60 bitrate=2278.1kbits/s speed=0.996x
+02/20/2024, 14:40:39.337042   [enc3stat] Watch dog pid is 632/frame= 5195 fps= 25 q=28.0 size=   57768kB time=00:03:27.72 bitrate=2278.2kbits/s speed=0.996x
+02/20/2024, 14:40:39.338040   [enc4stat] Watch dog pid is 4788/frame= 5195 fps= 25 q=0.0 size=   30827kB time=00:03:27.72 bitrate=1215.7kbits/s speed=0.996x
+02/20/2024, 14:40:39.338040   [enc1stat] Watch dog pid is 11476/frame= 6232 fps= 30 q=-1.0 size=   92438kB time=00:03:28.08 bitrate=3639.1kbits/s speed=1.01x
+02/20/2024, 14:40:39.339037   [enc2stat] Watch dog pid is 15552/frame= 6235 fps= 30 q=24.0 size=  125642kB time=00:03:28.04 bitrate=4947.4kbits/s speed=   1x
+02/20/2024, 14:40:42.340019   [enc3stat] Watch dog pid is 632/frame= 5260 fps= 25 q=28.0 size=   58488kB time=00:03:30.32 bitrate=2278.1kbits/s speed=0.996x
+02/20/2024, 14:40:42.340019   [enc4stat] Watch dog pid is 4788/frame= 5260 fps= 25 q=0.0 size=   31222kB time=00:03:30.32 bitrate=1216.1kbits/s speed=0.996x
+02/20/2024, 14:40:42.340019   [enc1stat] Watch dog pid is 11476/frame= 6324 fps= 30 q=-1.0 size=   93763kB time=00:03:31.16 bitrate=3637.5kbits/s speed=1.01x
+02/20/2024, 14:40:42.341015   [enc2stat] Watch dog pid is 15552/frame= 6328 fps= 30 q=24.0 size=  127407kB time=00:03:31.14 bitrate=4943.2kbits/s speed=   1x
+02/20/2024, 14:40:45.341522   [enc4stat] Watch dog pid is 4788/frame= 5338 fps= 25 q=0.0 size=   31697kB time=00:03:33.44 bitrate=1216.6kbits/s speed=0.996x
+02/20/2024, 14:40:45.342519   [enc2stat] Watch dog pid is 15552/frame= 6420 fps= 30 q=23.0 size=  129067kB time=00:03:34.21 bitrate=4935.8kbits/s speed=   1x
+02/20/2024, 14:40:45.342519   [enc1stat] Watch dog pid is 11476/frame= 6418 fps= 30 q=-1.0 size=   95142kB time=00:03:34.27 bitrate=3637.4kbits/s speed=1.01x
+02/20/2024, 14:40:48.343699   [enc4stat] Watch dog pid is 4788/frame= 5416 fps= 25 q=0.0 size=   32160kB time=00:03:36.56 bitrate=1216.5kbits/s speed=0.996x
+02/20/2024, 14:40:48.343699   [enc3stat] Watch dog pid is 632/frame= 5416 fps= 25 q=28.0 size=   60219kB time=00:03:36.56 bitrate=2278.0kbits/s speed=0.996x
+02/20/2024, 14:40:48.343699   [enc2stat] Watch dog pid is 15552/frame= 6511 fps= 30 q=24.0 size=  131309kB time=00:03:37.25 bitrate=4951.4kbits/s speed=   1x
+02/20/2024, 14:40:51.344841   [enc4stat] Watch dog pid is 4788/frame= 5494 fps= 25 q=0.0 size=   32635kB time=00:03:39.68 bitrate=1217.0kbits/s speed=0.996x
+02/20/2024, 14:40:51.344841   [enc3stat] Watch dog pid is 632/frame= 5494 fps= 25 q=25.0 size=   61101kB time=00:03:39.68 bitrate=2278.5kbits/s speed=0.996x
+02/20/2024, 14:40:51.345946   [enc1stat] Watch dog pid is 11476/frame= 6588 fps= 30 q=-1.0 size=   97775kB time=00:03:39.98 bitrate=3641.0kbits/s speed=1.01x
+02/20/2024, 14:40:51.345946   [enc2stat] Watch dog pid is 15552/frame= 6603 fps= 30 q=25.0 size=  133551kB time=00:03:40.32 bitrate=4965.7kbits/s speed=   1x
+02/20/2024, 14:40:54.345983   [enc4stat] Watch dog pid is 4788/frame= 5559 fps= 25 q=0.0 size=   33030kB time=00:03:42.28 bitrate=1217.3kbits/s speed=0.996x
+02/20/2024, 14:40:54.346902   [enc3stat] Watch dog pid is 632/frame= 5559 fps= 25 q=25.0 size=   61814kB time=00:03:42.28 bitrate=2278.1kbits/s speed=0.996x
+02/20/2024, 14:40:54.346902   [enc1stat] Watch dog pid is 11476/frame= 6683 fps= 30 q=-1.0 size=   99093kB time=00:03:43.12 bitrate=3638.2kbits/s speed=1.01x
+02/20/2024, 14:40:54.346902   [enc2stat] Watch dog pid is 15552/frame= 6697 fps= 30 q=24.0 size=  135707kB time=00:03:43.45 bitrate=4975.1kbits/s speed=   1x
+02/20/2024, 14:40:57.348310   [enc3stat] Watch dog pid is 632/frame= 5637 fps= 25 q=28.0 size=   62697kB time=00:03:45.40 bitrate=2278.7kbits/s speed=0.997x
+02/20/2024, 14:40:57.348310   [enc4stat] Watch dog pid is 4788/frame= 5637 fps= 25 q=0.0 size=   33505kB time=00:03:45.40 bitrate=1217.7kbits/s speed=0.997x
+02/20/2024, 14:40:57.349273   [enc1stat] Watch dog pid is 11476/frame= 6776 fps= 30 q=-1.0 size=  100503kB time=00:03:46.24 bitrate=3639.1kbits/s speed=1.01x
+02/20/2024, 14:40:57.349273   [enc2stat] Watch dog pid is 15552/frame= 6772 fps= 30 q=25.0 size=  137524kB time=00:03:45.95 bitrate=4985.9kbits/s speed=   1x
+02/20/2024, 14:41:00.350665   [enc4stat] Watch dog pid is 4788/frame= 5715 fps= 25 q=0.0 size=   33968kB time=00:03:48.52 bitrate=1217.7kbits/s speed=0.997x
+02/20/2024, 14:41:00.350665   [enc3stat] Watch dog pid is 632/frame= 5715 fps= 25 q=28.0 size=   63561kB time=00:03:48.52 bitrate=2278.6kbits/s speed=0.997x
+02/20/2024, 14:41:00.350665   [enc1stat] Watch dog pid is 11476/frame= 6855 fps= 30 q=-1.0 size=  101723kB time=00:03:48.86 bitrate=3641.1kbits/s speed=1.01x
+02/20/2024, 14:41:00.350665   [enc2stat] Watch dog pid is 15552/frame= 6866 fps= 30 q=23.0 size=  139310kB time=00:03:49.09 bitrate=4981.4kbits/s speed=   1x
+02/20/2024, 14:41:03.352389   [enc3stat] Watch dog pid is 632/frame= 5793 fps= 25 q=28.0 size=   64437kB time=00:03:51.64 bitrate=2278.8kbits/s speed=0.997x
+02/20/2024, 14:41:03.352389   [enc4stat] Watch dog pid is 4788/frame= 5793 fps= 25 q=0.0 size=   34445kB time=00:03:51.64 bitrate=1218.2kbits/s speed=0.997x
+02/20/2024, 14:41:03.353342   [enc2stat] Watch dog pid is 15552/frame= 6957 fps= 30 q=24.0 size=  140794kB time=00:03:52.13 bitrate=4968.7kbits/s speed=   1x
+02/20/2024, 14:41:03.353342   [enc1stat] Watch dog pid is 11476/frame= 6948 fps= 30 q=-1.0 size=  103085kB time=00:03:51.98 bitrate=3640.3kbits/s speed=1.01x
+02/20/2024, 14:41:06.353858   [enc3stat] Watch dog pid is 632/frame= 5871 fps= 25 q=28.0 size=   65290kB time=00:03:54.76 bitrate=2278.3kbits/s speed=0.997x
+02/20/2024, 14:41:06.353858   [enc4stat] Watch dog pid is 4788/frame= 5871 fps= 25 q=0.0 size=   34906kB time=00:03:54.76 bitrate=1218.1kbits/s speed=0.997x
+02/20/2024, 14:41:06.354931   [enc2stat] Watch dog pid is 15552/frame= 7048 fps= 30 q=24.0 size=  142700kB time=00:03:55.16 bitrate=4970.9kbits/s speed=   1x
+02/20/2024, 14:41:06.354931   [enc1stat] Watch dog pid is 11476/frame= 7040 fps= 30 q=-1.0 size=  104407kB time=00:03:55.05 bitrate=3638.8kbits/s speed=1.01x
+02/20/2024, 14:41:09.355316   [enc3stat] Watch dog pid is 632/frame= 5936 fps= 25 q=28.0 size=   66005kB time=00:03:57.36 bitrate=2278.0kbits/s speed=0.997x
+02/20/2024, 14:41:09.356390   [enc4stat] Watch dog pid is 4788/frame= 5936 fps= 25 q=0.0 size=   35298kB time=00:03:57.36 bitrate=1218.2kbits/s speed=0.997x
+02/20/2024, 14:41:09.356390   [enc1stat] Watch dog pid is 11476/frame= 7134 fps= 30 q=-1.0 size=  105852kB time=00:03:58.18 bitrate=3640.6kbits/s speed=1.01x
+02/20/2024, 14:41:09.356390   [enc2stat] Watch dog pid is 15552/frame= 7139 fps= 30 q=25.0 size=  145106kB time=00:03:58.20 bitrate=4990.3kbits/s speed=   1x
+02/20/2024, 14:41:12.356693   [enc3stat] Watch dog pid is 632/frame= 6014 fps= 25 q=25.0 size=   66884kB time=00:04:00.48 bitrate=2278.4kbits/s speed=0.997x
+02/20/2024, 14:41:12.357691   [enc2stat] Watch dog pid is 15552/frame= 7232 fps= 30 q=24.0 size=  147348kB time=00:04:01.30 bitrate=5002.2kbits/s speed=   1x
+02/20/2024, 14:41:12.357691   [enc4stat] Watch dog pid is 4788/frame= 6014 fps= 25 q=0.0 size=   35778kB time=00:04:00.48 bitrate=1218.8kbits/s speed=0.997x
+02/20/2024, 14:41:12.357691   [enc1stat] Watch dog pid is 11476/frame= 7227 fps= 30 q=-1.0 size=  107143kB time=00:04:01.25 bitrate=3638.0kbits/s speed=1.01x
+02/20/2024, 14:41:15.358183   [enc3stat] Watch dog pid is 632/frame= 6092 fps= 25 q=28.0 size=   67758kB time=00:04:03.60 bitrate=2278.6kbits/s speed=0.997x
+02/20/2024, 14:41:15.359261   [enc2stat] Watch dog pid is 15552/frame= 7325 fps= 30 q=25.0 size=  149519kB time=00:04:04.41 bitrate=5011.5kbits/s speed=   1x
+02/20/2024, 14:41:15.359261   [enc1stat] Watch dog pid is 11476/frame= 7319 fps= 30 q=-1.0 size=  108606kB time=00:04:04.36 bitrate=3640.9kbits/s speed=1.01x
+02/20/2024, 14:41:18.360332   [enc3stat] Watch dog pid is 632/frame= 6170 fps= 25 q=28.0 size=   68621kB time=00:04:06.72 bitrate=2278.5kbits/s speed=0.997x
+02/20/2024, 14:41:18.360332   [enc2stat] Watch dog pid is 15552/frame= 7416 fps= 30 q=24.0 size=  151305kB time=00:04:07.44 bitrate=5009.1kbits/s speed=   1x
+02/20/2024, 14:41:18.361248   [enc1stat] Watch dog pid is 11476/frame= 7411 fps= 30 q=-1.0 size=  109951kB time=00:04:07.43 bitrate=3640.3kbits/s speed=1.01x
+02/20/2024, 14:41:18.361248   [enc4stat] Watch dog pid is 4788/frame= 6170 fps= 25 q=0.0 size=   36715kB time=00:04:06.72 bitrate=1219.1kbits/s speed=0.997x
+02/20/2024, 14:41:21.362402   [enc1stat] Watch dog pid is 11476/frame= 7487 fps= 30 q=-1.0 size=  111072kB time=00:04:09.96 bitrate=3640.1kbits/s speed=1.01x
+02/20/2024, 14:41:21.362402   [enc2stat] Watch dog pid is 15552/frame= 7493 fps= 30 q=25.0 size=  153018kB time=00:04:10.01 bitrate=5013.8kbits/s speed=   1x
+02/20/2024, 14:41:21.362402   [enc4stat] Watch dog pid is 4788/frame= 6235 fps= 25 q=0.0 size=   37106kB time=00:04:09.32 bitrate=1219.2kbits/s speed=0.997x
+02/20/2024, 14:41:24.364063   [enc2stat] Watch dog pid is 15552/frame= 7586 fps= 30 q=25.0 size=  155120kB time=00:04:13.12 bitrate=5020.3kbits/s speed=   1x
+02/20/2024, 14:41:24.365160   [enc3stat] Watch dog pid is 632/frame= 6313 fps= 25 q=28.0 size=   70208kB time=00:04:12.44 bitrate=2278.3kbits/s speed=0.997x
+02/20/2024, 14:41:24.365160   [enc1stat] Watch dog pid is 11476/frame= 7581 fps= 30 q=-1.0 size=  112446kB time=00:04:13.10 bitrate=3639.4kbits/s speed=1.01x
+02/20/2024, 14:41:24.365160   [enc4stat] Watch dog pid is 4788/frame= 6313 fps= 25 q=0.0 size=   37587kB time=00:04:12.44 bitrate=1219.7kbits/s speed=0.997x
+02/20/2024, 14:41:27.365232   [enc2stat] Watch dog pid is 15552/frame= 7678 fps= 30 q=21.0 size=  156775kB time=00:04:16.18 bitrate=5013.1kbits/s speed=   1x
+02/20/2024, 14:41:27.366333   [enc1stat] Watch dog pid is 11476/frame= 7675 fps= 30 q=-1.0 size=  113675kB time=00:04:16.24 bitrate=3634.2kbits/s speed=1.01x
+02/20/2024, 14:41:27.366333   [enc3stat] Watch dog pid is 632/frame= 6391 fps= 25 q=28.0 size=   71066kB time=00:04:15.56 bitrate=2278.0kbits/s speed=0.997x
+02/20/2024, 14:41:27.366333   [enc4stat] Watch dog pid is 4788/frame= 6391 fps= 25 q=0.0 size=   38046kB time=00:04:15.56 bitrate=1219.6kbits/s speed=0.997x
+02/20/2024, 14:41:30.366447   [enc2stat] Watch dog pid is 15552/frame= 7768 fps= 30 q=20.0 size=  157297kB time=00:04:19.19 bitrate=4971.5kbits/s speed=   1x
+02/20/2024, 14:41:30.367495   [enc1stat] Watch dog pid is 11476/frame= 7767 fps= 30 q=-1.0 size=  114889kB time=00:04:19.32 bitrate=3629.3kbits/s speed=1.01x
+02/20/2024, 14:41:30.367495   [enc3stat] Watch dog pid is 632/frame= 6469 fps= 25 q=25.0 size=   71936kB time=00:04:18.68 bitrate=2278.1kbits/s speed=0.997x
+02/20/2024, 14:41:30.367495   [enc4stat] Watch dog pid is 4788/frame= 6469 fps= 25 q=0.0 size=   38524kB time=00:04:18.68 bitrate=1220.0kbits/s speed=0.997x
+02/20/2024, 14:41:33.368562   [enc2stat] Watch dog pid is 15552/frame= 7860 fps= 30 q=19.0 size=  157650kB time=00:04:22.26 bitrate=4924.3kbits/s speed=   1x
+02/20/2024, 14:41:33.368562   [enc1stat] Watch dog pid is 11476/frame= 7847 fps= 30 q=-1.0 size=  116314kB time=00:04:21.97 bitrate=3637.1kbits/s speed=1.01x
+02/20/2024, 14:41:33.368562   [enc3stat] Watch dog pid is 632/frame= 6534 fps= 25 q=25.0 size=   72656kB time=00:04:21.28 bitrate=2278.0kbits/s speed=0.997x
+02/20/2024, 14:41:33.368562   [enc4stat] Watch dog pid is 4788/frame= 6534 fps= 25 q=0.0 size=   38915kB time=00:04:21.28 bitrate=1220.1kbits/s speed=0.997x
+02/20/2024, 14:41:36.369700   [enc2stat] Watch dog pid is 15552/frame= 7952 fps= 30 q=21.0 size=  158253kB time=00:04:25.33 bitrate=4886.0kbits/s speed=   1x
+02/20/2024, 14:41:36.370756   [enc4stat] Watch dog pid is 4788/frame= 6612 fps= 25 q=0.0 size=   39396kB time=00:04:24.40 bitrate=1220.6kbits/s speed=0.997x
+02/20/2024, 14:41:36.369700   [enc1stat] Watch dog pid is 11476/frame= 7940 fps= 30 q=-1.0 size=  117771kB time=00:04:25.06 bitrate=3639.8kbits/s speed=1.01x
+02/20/2024, 14:41:36.370756   [enc3stat] Watch dog pid is 632/frame= 6612 fps= 25 q=28.0 size=   73529kB time=00:04:24.40 bitrate=2278.2kbits/s speed=0.997x
+02/20/2024, 14:41:39.371779   [enc3stat] Watch dog pid is 632/frame= 6690 fps= 25 q=28.0 size=   74395kB time=00:04:27.52 bitrate=2278.1kbits/s speed=0.997x
+02/20/2024, 14:41:39.371779   [enc4stat] Watch dog pid is 4788/frame= 6690 fps= 25 q=0.0 size=   39855kB time=00:04:27.52 bitrate=1220.4kbits/s speed=0.997x
+02/20/2024, 14:41:39.371779   [enc1stat] Watch dog pid is 11476/frame= 8033 fps= 30 q=-1.0 size=  119159kB time=00:04:28.18 bitrate=3639.8kbits/s speed=1.01x
+02/20/2024, 14:41:39.371779   [enc2stat] Watch dog pid is 15552/frame= 8044 fps= 30 q=24.0 size=  160605kB time=00:04:28.40 bitrate=4901.9kbits/s speed=   1x
+02/20/2024, 14:41:42.373236   [enc1stat] Watch dog pid is 11476/frame= 8128 fps= 30 q=-1.0 size=  120526kB time=00:04:31.33 bitrate=3638.8kbits/s speed=1.01x
+02/20/2024, 14:41:42.373236   [enc4stat] Watch dog pid is 4788/frame= 6768 fps= 25 q=0.0 size=   40335kB time=00:04:30.64 bitrate=1220.9kbits/s speed=0.997x
+02/20/2024, 14:41:42.374220   [enc2stat] Watch dog pid is 15552/frame= 8136 fps= 30 q=24.0 size=  162860kB time=00:04:31.47 bitrate=4914.5kbits/s speed=   1x
+02/20/2024, 14:41:42.374220   [enc3stat] Watch dog pid is 632/frame= 6768 fps= 25 q=28.0 size=   75274kB time=00:04:30.64 bitrate=2278.5kbits/s speed=0.997x
+02/20/2024, 14:41:44.752063   [enc4stat] ffmpeg process exited with error code 3221225786
+02/20/2024, 14:41:44.753061   [enc4 Finish encoder
+02/20/2024, 14:41:44.754291   [enc4 run with param] ==> 
+ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4
+02/20/2024, 14:41:44.775845   [enc4stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:41:44.878021   [enc3stat] ffmpeg process exited with error code 3221225786
+02/20/2024, 14:41:44.878021   [enc3 Finish encoder
+02/20/2024, 14:41:44.879019   [enc3 run with param] ==> 
+ffmpeg -f lavfi -re -i "testsrc2=size=800x720" -pix_fmt yuv420p -c:v h264 -g 5 -f flv -an rtmp://127.0.0.1/live/enc3
+02/20/2024, 14:41:44.900064   [enc3stat] ## Duration detected....  N/A, start:
+02/20/2024, 14:41:44.973999   [enc2stat] ffmpeg process exited with error code 3221225786
+02/20/2024, 14:41:44.974997   [enc2 Finish encoder
+02/20/2024, 14:41:44.975994   [enc2 run with param] ==> 
+ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2
+02/20/2024, 14:41:45.020080   [enc1stat] ffmpeg process exited with error code 3221225786

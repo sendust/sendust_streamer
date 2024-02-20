@@ -184,7 +184,7 @@ class encoder:
         size_ffreport = get_filesize(self.ffreport)
         sio_encoder_report({f'{self.name}ffreport' : size_ffreport})
         size_delta_ffreport = size_ffreport - self.size_ffreport_before
-        if size_delta_ffreport > 150:
+        if size_delta_ffreport > 200:
             updatelog(f'[{self.name}]ffreport delta has abnormal size.. kill encoder')
             updatelog(f'[{self.name}]reason - \n{self.read_ffreport()}')
             self.kill()

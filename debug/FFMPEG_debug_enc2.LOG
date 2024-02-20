@@ -1,2 +1,4 @@
 Command line:
-ffmpeg -f lavfi -re -i "testsrc=size=1280x720" -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc2
+ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 4000000000 -audio_depth 32 -i "DeckLink Studio 4K" -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 500k -c:a aac -f flv rtmp://127.0.0.1/live/enc2
+[aist#0:0/pcm_s32le @ 0000021e8a0ea740] Guessed Channel Layout: stereo
+[libx264 @ 0000021e8a112580] VBV maxrate unspecified, assuming CBR
