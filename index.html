@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Welcome sendust streamer ~&nbsp&nbsp&nbsp It works !</h1>
+<h1 id = "now"> Engine time... </h1>
+<hr>
+
+<input type="text" id="textInput"/>
+<button id="submitButton" onclick="send_manual_cmd(this)">send_cmd</button>
+<hr>
+
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 25%;">Title</th>
+            <th style="width: 25%;">STAT</th>
+			<th style="width: 10%;">FFREPORT</th>
+            <th style="width: 10%;">START</th>
+            <th style="width: 10%;">STOP</th>
+            <th style="width: 10%;">ENGINE▶</th>
+            <th style="width: 10%;">▶ENGINE</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        <tr>
+            <td><input type='text'  id='enc1title'></td>
+            <td><label type='text'  id='enc1stat'>--:--:--.--</label></td>
+			<td><label type='text'  id='enc1ffreport'>0</label></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc1start">START</button></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc1stop">STOP</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc1get">GET</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc1set">SET</button></td>			
+        </tr>
+
+        <tr>
+            <td><input type='text'  id='enc2title'></td>
+            <td><label type='text'  id='enc2stat'>--:--:--.--</label></td>
+			<td><label type='text'  id='enc2ffreport'>0</label></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc2start">START</button></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc2stop">STOP</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc2get">GET</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc2set">SET</button></td>			
+        </tr>
+
+        <tr>
+            <td><input type='text'  id='enc3title'></td>
+            <td><label type='text'  id='enc3stat'>--:--:--.--</label></td>
+			<td><label type='text'  id='enc3ffreport'>0</label></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc3start">START</button></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc3stop">STOP</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc3get">GET</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc3set">SET</button></td>			
+        </tr>
+
+        <tr>
+            <td><input type='text'  id='enc4title'></td>
+            <td><label type='text'  id='enc4stat'>--:--:--.--</label></td>
+			<td><label type='text'  id='enc4ffreport'>0</label></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc4start">START</button></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc4stop">STOP</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc4get">GET</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc4set">SET</button></td>			
+        </tr>
+
+
+
+    </tbody>
+</table>
+
+<p></p>
+
+
+<table>
+    <thead>
+        <tr>
+            <th style="width: 10%;">TIME</th>
+            <th style="width: 90%;">PARAMETER</th>
+        </tr>
+    </thead>
+    <tbody id="table-body2">
+        <tr>
+			<td><textarea id="id_timetable" rows="10" cols="10" label="TIME"></textarea>
+			<td><textarea id="id_param" rows="10" cols="150"></textarea>
+        </tr>
+	</tbody>
+
+<table>
+
+
+
+
+
+
+
+
+
+
+<br>
+<button onclick="getText()">Get Text</button>  &nbsp &nbsp
+
+
+<label for="preset">PRESET: </label>  &nbsp
+
+<select name="preset" id="preset" onchange="onpresetchange(this)">
+  <option value="preset1" selected="selected">PRESET1</option>
+  <option value="preset2">PRESET2</option>
+  <option value="preset3">PRESET3</option>
+  <option value="preset4">PRESET4</option>
+  <option value="preset5">PRESET5</option>
+  <option value="preset6">PRESET6</option>
+  <option value="preset7">PRESET7</option>
+  <option value="preset8">PRESET8</option>
+  <option value="preset9">PRESET9</option>
+  <option value="preset10">PRESET10</option>
+</select>
+&nbsp &nbsp
+<button onclick="setPreset()">Preset SAVE</button>
+
+&nbsp &nbsp
+<button id="getdshow" onclick="on_simple_btn(this)">List dshow</button>
+
+
+&nbsp &nbsp
+<button id="getdecklink" onclick="on_simple_btn(this)">List Decklink </button>
+
+<hr>
+<textarea id="enginemsg" rows="10" cols="180" width="100%"></textarea>
+
+</body>
+
+<style>
+    table {
+        border: 2px solid black; /* Set border for the table */
+        border-collapse: collapse;
+    }
+	th {
+		font-size: 1.2rem;
+		background: #ccc;
+	}
+    th, td {
+        border: 1px solid #ccc; /* Set border for table cells */
+        #padding: 8px;
+        text-align: center;
+    }
+	td {
+		font-size: 1.1rem;
+	}
+	tr:nth-child(even) {
+	background: #efefef;
+	
+	}
+
+	tr:hover {
+	  background: #d1d1d1;
+	}
+	
+	input {
+		font-size: 1.2rem;
+	}
+	
+	textarea	{
+		font-size: 1.2rem;
+	}
+</style>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+
+var socket = io();
+socket.onAny((eventName) =>{
+    console.log(eventName);
+    });
+
+
+socket.on("message_test", function(data){
+    console.log(data);
+	objkeys = Object.keys(data);
+	console.log(objkeys);
+	if (data['enc1_ff'])
+	{
+		document.getElementById("enc1stat").innerHTML = data['enc1_ff'];
+	}
+});
+
+const valid_id_HTML= ["enc1stat", "enc1ffreport", "enc2stat", "enc2ffreport",
+                    "enc3stat", "enc3ffreport", "enc4stat", "enc4ffreport"]
+const valid_id_text = ["now"]
+const valid_id_value = ["enc1title", "id_param", "id_timetable", "enginemsg",
+                    "enc2title", "enc3title", "enc4title"]
+
+socket.on("message", function(data){
+    console.log(data);
+	if (objectHasKeys(data, valid_id_HTML)){
+		for (const [key, value] of Object.entries(data)) {
+			  //console.log(`${key}: ${value}`);
+			  document.getElementById(key).innerHTML = value;
+			}
+	}
+	
+	if (objectHasKeys(data, valid_id_text)){
+		for (const [key, value] of Object.entries(data)) {
+		  //console.log(`${key}: ${value}`);
+		  document.getElementById(key).innerText = value;
+		}
+	}	
+	if (objectHasKeys(data, valid_id_value)){
+		for (const [key, value] of Object.entries(data)) {
+		  //console.log(`${key}: ${value}`);
+		  document.getElementById(key).value = value;
+		}		
+	}
+});
+
+
+
+
+function send_manual_cmd()
+{
+    var userInput = document.getElementById("textInput").value;
+	socket.emit("message", {"cmd" : userInput, "data" : {}});
+}
+
+
+function send_cmd(cmd, data)
+{
+	socket.emit("message", {"cmd" : cmd, "data" : data});
+}
+  
+
+function handleButtonClick(button) {
+	// alert("Button " + button.innerText + " clicked!");
+	console.log(button.id);
+	send_cmd(button.id, {})
+}
+
+function handleButtonStaStop(button) {
+	socket.emit("message", {"cmd" : button.id, "data" : {}});
+    if (["enc1start", "enc2start", "enc3start", "enc4start"].includes(button.id))
+    {
+        update_video();
+    }
+}
+
+
+function handleButtonGetSet(button) {
+	var dict_title = {"enc1get" : "enc1title", "enc1set" : "enc1title",
+            "enc2get" : "enc2title", "enc2set" : "enc2title",
+            "enc3get" : "enc3title", "enc3set" : "enc3title",
+            "enc4get" : "enc4title", "enc4set" : "enc4title" }
+	var param = document.getElementById("id_param").value;
+	var timetb = document.getElementById("id_timetable").value;
+	var title = document.getElementById(dict_title[button.id]).value;
+	socket.emit("message", {"cmd" : button.id, "data" : {"param" : param, "timetb" : timetb , "title" : title}});
+}
+
+
+
+function getText() {
+	var text = document.getElementById("id_param").value;
+	console.log("Text from text area:", text);
+	// You can perform further operations with the text here
+}
+
+
+function objectHasKeys(object, keys) {
+    for (let key of keys) {
+        if (object.hasOwnProperty(key)) {
+            return true; // Object has at least one key from the list
+        }
+    }
+    return false; // Object does not have any key from the list
+}
+
+
+function onpresetchange(data){
+    console.log(data.value)
+    socket.emit("message", {"cmd" : data.value + "get", "data" : {}});
+}
+
+function setPreset(){
+    var preset_value = document.getElementById("preset").value
+    //var param = document.getElementById("id_param").value;
+	var param = document.getElementById("enginemsg").value;
+    console.log(preset_value)
+    socket.emit("message", {"cmd" : preset_value + "set", "data" : {"param" : param}});
+}
+
+function on_simple_btn(button){
+    socket.emit("message", {"cmd" : button.id , "data" : {}});
+}
+
+
+
+</script>
+
+<script src="/flv.min.js"></script>
+<hr>
+<table>
+    <thead>
+        <tr>
+            <th style="width: 25%;">rtmp://127.0.0.1/live/enc1</th>
+            <th style="width: 25%;">rtmp://127.0.0.1/live/enc2</th>
+            <th style="width: 25%;">rtmp://127.0.0.1/live/enc3</th>
+            <th style="width: 25%;">rtmp://127.0.0.1/live/enc4</th>
+        </tr>
+    </thead>
+    <tbody id="table-videowin">
+        <tr>
+			<td><video id="videoElement1" width="320" height="240" autoplay muted control></video>
+            <td><video id="videoElement2" width="320" height="240" autoplay muted control></video>
+            <td><video id="videoElement3" width="320" height="240" autoplay muted control></video>
+            <td><video id="videoElement4" width="320" height="240" autoplay muted control></video>
+        </tr>
+	</tbody>
+
+<table>
+
+<script>
+let host=window.location.hostname
+const dict_video = {'videoElement1' : 'ws://'+host+':8000/live/enc1.flv',
+            'videoElement2' : 'ws://'+host+':8000/live/enc2.flv',
+            'videoElement3' : 'ws://'+host+':8000/live/enc3.flv',
+            'videoElement4' : 'ws://'+host+':8000/live/enc4.flv'}
+
+
+function update_video(){
+    if (flvjs.isSupported()) {
+        var jsplayers = []
+        for (const [key, value] of Object.entries(dict_video)) {
+                var videoElement = document.getElementById(key);
+                var flvPlayer = flvjs.createPlayer({
+                    type: 'flv',
+                    isLive: true,
+                    url: value
+                });
+                    flvPlayer.attachMediaElement(videoElement);
+                    flvPlayer.load();
+                    flvPlayer.play();
+                    jsplayers.push(flvPlayer)
+                }
+    }
+}
+</script>
+
+
+<script>	// Load encoder title when page loading finished..
+document.addEventListener('readystatechange', event => { 
+
+    // When HTML/DOM elements are ready:
+    if (event.target.readyState === "interactive") {   //does same as:  ..addEventListener("DOMContentLoaded"..
+        console.log("HTML/DOM elements are ready");
+    }
+
+    // When window loaded ( external resources are loaded too- `css`,`src`, etc...) 
+    if (event.target.readyState === "complete") {
+        console.log("window loaded");
+		socket.emit("message", {"cmd" : "enc1get", "data" : {}});
+		socket.emit("message", {"cmd" : "enc2get", "data" : {}});
+		socket.emit("message", {"cmd" : "enc3get", "data" : {}});
+		socket.emit("message", {"cmd" : "enc4get", "data" : {}});
+		update_video()
+    }
+});
+</script>
+
+
+</html>
+

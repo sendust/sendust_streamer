@@ -1,0 +1,2 @@
+Command line:
+ffmpeg -f lavfi -re -i "testsrc=size=1280x720" -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc2
