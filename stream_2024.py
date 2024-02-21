@@ -1,8 +1,8 @@
 #  AWS elemental encoder alternative.
 #  Code managed by sendust, SBS (2024~)
 #  node, express, ffmpeg
-#  2024/2/17 first code.
-#
+#   2024/2/17   first code.
+#   2024/2/21   Improve encoder thread handling, logging, more protocol commands
 #
 
 
@@ -98,13 +98,16 @@ class encoder:
         self.param = {}
 
     def start(self):
+        if self.isrunning:
+            updatelog(f'[{self.name}]Already running. reason : FLAG isrunning !')
+            return
+        if self.name in get_all_threadname():
+            updatelog(f'[{self.name}]Already running. reason : threadname')
+            return
         self.thread = threading.Thread(target=self.run, name=f'{self.name}_enc')
         self.thread.start()
         
     def run(self):
-        if self.isrunning:
-            updatelog(f'[{self.name}Already running]')
-            return
         self.keep_running = True
         while self.keep_running:
             self.isrunning = True
@@ -129,7 +132,8 @@ class encoder:
                 #self.keep_running = False
                 self.timer_cancel()
                 self.score_fail = 0
-                updatelog(f'[{self.name}Encoder exited immediately. Reason ->\n{self.read_ffreport()}')
+                updatelog(f'[{self.name}]Encoder exited immediately. Reason ->\n{self.read_ffreport()}')
+                updatelog(f'[{self.name}]Wait until next retry...')
                 while (self.keep_running and (time.time() - t_start < 15)):
                     time.sleep(0.1)
             self.isrunning = False
@@ -184,9 +188,10 @@ class encoder:
         size_ffreport = get_filesize(self.ffreport)
         sio_encoder_report({f'{self.name}ffreport' : size_ffreport})
         size_delta_ffreport = size_ffreport - self.size_ffreport_before
+        if size_delta_ffreport:
+            updatelog(f'[{self.name}]ffreport size changed - \n{self.read_ffreport()}')
         if size_delta_ffreport > 200:
             updatelog(f'[{self.name}]ffreport delta has abnormal size.. kill encoder')
-            updatelog(f'[{self.name}]reason - \n{self.read_ffreport()}')
             self.kill()
             time.sleep(0.1)
         if subprocessor.pid_running(self.enc.process.pid):
@@ -279,6 +284,13 @@ def decode_protocol(protocol):
         cmd = protocol.get("cmd")
     except:
         cmd = "unknown"
+    
+    if cmd.startswith("shell"):
+        cmd_shell = cmd[5:].strip()
+        res = subprocessor.get_stdout(cmd_shell, "cp949")
+        wg.send({"enginemsg" : res})
+        return
+        
     
     if cmd in ["halt", "shutdown"]:
         keep_run = False
@@ -391,7 +403,7 @@ enc4 = encoder("enc4")
 for each in [enc1, enc2, enc3, enc4]:
     updatelog(each.load_param())
 
-wg.send({"enginemsg" : "Encoder Created..."})
+wg.send({"enginemsg" : "Encoder Created...\nApplication Started...."})
 
 pst = preset()
 pst.read()

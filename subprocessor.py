@@ -60,7 +60,7 @@ class launcher:
         self.osenv = dict
     
     def watchdog(self):
-        self.updatelog((f'[{self.name_thread}] Watch dog pid is {self.process.pid}/{self.watchdog_now}'))
+        #self.updatelog((f'[{self.name_thread}] Watch dog pid is {self.process.pid}/{self.watchdog_now}'))
         if self.watchdog_last == self.watchdog_now:
             self.updatelog(f'[{self.name_thread}] No response from process.. kill')
             p = subprocess.run(f'taskkill /f /pid {self.process.pid}', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -172,9 +172,14 @@ class launcher:
             with open(self.file_finish, 'w', encoding='utf-8') as f:
                 f.writelines(self.str_run)
 
-def get_stdout(str_run):
-    p = subprocess.run(shlex.split(str_run), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding="utf8", errors="replace", universal_newlines=True)
-    return p.stdout
+def get_stdout(str_run, cp="utf8"):
+    result = ""
+    try:
+        p = subprocess.run(shlex.split(str_run), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding=cp, errors="replace", universal_newlines=True)
+        result = p.stdout
+    except:
+        result = "Fail to launch"
+    return result
 
 
 if __name__ == "__main__":
