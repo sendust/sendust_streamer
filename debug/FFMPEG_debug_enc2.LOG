@@ -1,7 +1,4 @@
 Command line:
 ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i "DeckLink Studio 4K" -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1/live/enc2
-[decklink @ 000001caf32d2400] Frame received (#1) - No input signal detected - Frames dropped 1
-[aist#0:0/pcm_s32le @ 000001caf32ba740] Guessed Channel Layout: stereo
-[libx264 @ 000001caf32e2940] VBV maxrate unspecified, assuming CBR
-[decklink @ 000001caf32d2400] Frame received (#525783) - Input returned - Frames dropped 2
-[libx264 @ 000001caf32e2940] VBV underflow (frame 525783, -523 bits)
+[aist#0:0/pcm_s32le @ 00000186e42056c0] Guessed Channel Layout: stereo
+[libx264 @ 00000186e4201e80] VBV maxrate unspecified, assuming CBR
