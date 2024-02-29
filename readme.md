@@ -29,6 +29,14 @@ Run Windows batch
 2_start_engine.bat
 ```
 
+
+AUTO START first two encoder
+
+```bash
+python stream_2024.py 2
+```
+
+
 open web browser
 http://localhost:5000
 

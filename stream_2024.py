@@ -415,14 +415,27 @@ enc3 = encoder("enc3")
 enc4 = encoder("enc4")
 enc5 = encoder("enc5")
 enc6 = encoder("enc6")
+list_encoder = [enc1, enc2, enc3, enc4, enc5, enc6]
 
-for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
-    updatelog(each.load_param())
 
 wg.send({"enginemsg" : "Encoder Created...\nApplication Started...."})
-
 pst = preset()
 pst.read()
+
+for each in list_encoder:
+    updatelog(each.load_param())
+
+try:
+    autostart = int(sys.argv[1])
+except:
+    autostart = 0
+    updatelog(f'Encoder auto start disabled....')
+    
+for i in range(autostart):      # auto start encoder 
+    updatelog(f'Auto start encoder .... {i}')
+    list_encoder[i].start()
+
+
 
 keep_run = True
 
@@ -433,6 +446,6 @@ try:
         time.sleep(1)
 except KeyboardInterrupt:
     keep_run = False
-    for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
+    for each in list_encoder:
         each.stop()
         

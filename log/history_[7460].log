@@ -345,3 +345,13 @@ ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 400000
 [aist#0:0/pcm_s32le @ 000002a51935a740] Guessed Channel Layout: stereo
 [libx264 @ 000002a519381cc0] VBV maxrate unspecified, assuming CBR
 
+02/29/2024, 12:51:43.700927   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 12:51:43.700927   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 12:51:43.712732   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 12:51:43.712732   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 12:51:43.713729   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 12:51:43.715724   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 13:10:00.703267   [enc2stat] ffmpeg process exited with error code 3221225786
+02/29/2024, 13:10:00.704262   [enc2 Finish encoder
+02/29/2024, 13:10:00.705259   [enc2 run with param] ==> 
+ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2

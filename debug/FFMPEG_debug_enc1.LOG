@@ -1,2 +1,2 @@
 Command line:
-ffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1/live/enc1
+ffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1
