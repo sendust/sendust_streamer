@@ -7,6 +7,7 @@
 
 <input type="text" id="textInput" size="50"/>
 <button id="submitButton" onclick="send_manual_cmd(this)">send_cmd</button>
+
 <hr>
 
 
@@ -15,11 +16,12 @@
         <tr>
             <th style="width: 25%;">Title</th>
             <th style="width: 25%;">STAT</th>
-			<th style="width: 10%;">FFREPORT</th>
-            <th style="width: 10%;">START</th>
-            <th style="width: 10%;">STOP</th>
-            <th style="width: 10%;">ENGINE▶</th>
-            <th style="width: 10%;">▶ENGINE</th>
+			<th style="width: 8%;">FFREPORT</th>
+            <th style="width: 8%;">PID</th>
+            <th style="width: 8%;">START</th>
+            <th style="width: 8%;">STOP</th>
+            <th style="width: 8%;">ENGINE▶</th>
+            <th style="width: 8%;">▶ENGINE</th>
         </tr>
     </thead>
     <tbody id="table-body">
@@ -27,6 +29,7 @@
             <td><input type='text'  id='enc1title'></td>
             <td><label type='text'  id='enc1stat'>--:--:--.--</label></td>
 			<td><label type='text'  id='enc1ffreport'>0</label></td>
+            <td><label type='text'  id='enc1stat_pid'>-1</label></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc1start">START</button></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc1stop">STOP</button></td>
 			<td><button onclick="handleButtonGetSet(this)" id="enc1get">GET</button></td>
@@ -37,6 +40,7 @@
             <td><input type='text'  id='enc2title'></td>
             <td><label type='text'  id='enc2stat'>--:--:--.--</label></td>
 			<td><label type='text'  id='enc2ffreport'>0</label></td>
+            <td><label type='text'  id='enc2stat_pid'>-1</label></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc2start">START</button></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc2stop">STOP</button></td>
 			<td><button onclick="handleButtonGetSet(this)" id="enc2get">GET</button></td>
@@ -47,6 +51,7 @@
             <td><input type='text'  id='enc3title'></td>
             <td><label type='text'  id='enc3stat'>--:--:--.--</label></td>
 			<td><label type='text'  id='enc3ffreport'>0</label></td>
+            <td><label type='text'  id='enc3stat_pid'>-1</label></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc3start">START</button></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc3stop">STOP</button></td>
 			<td><button onclick="handleButtonGetSet(this)" id="enc3get">GET</button></td>
@@ -57,12 +62,34 @@
             <td><input type='text'  id='enc4title'></td>
             <td><label type='text'  id='enc4stat'>--:--:--.--</label></td>
 			<td><label type='text'  id='enc4ffreport'>0</label></td>
+            <td><label type='text'  id='enc4stat_pid'>-1</label></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc4start">START</button></td>
             <td><button onclick="handleButtonStaStop(this)" id="enc4stop">STOP</button></td>
 			<td><button onclick="handleButtonGetSet(this)" id="enc4get">GET</button></td>
 			<td><button onclick="handleButtonGetSet(this)" id="enc4set">SET</button></td>			
         </tr>
 
+        <tr>
+            <td><input type='text'  id='enc5title'></td>
+            <td><label type='text'  id='enc5stat'>--:--:--.--</label></td>
+			<td><label type='text'  id='enc5ffreport'>0</label></td>
+            <td><label type='text'  id='enc5stat_pid'>-1</label></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc5start">START</button></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc5stop">STOP</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc5get">GET</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc5set">SET</button></td>			
+        </tr>
+
+        <tr>
+            <td><input type='text'  id='enc6title'></td>
+            <td><label type='text'  id='enc6stat'>--:--:--.--</label></td>
+			<td><label type='text'  id='enc6ffreport'>0</label></td>
+            <td><label type='text'  id='enc6stat_pid'>-1</label></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc6start">START</button></td>
+            <td><button onclick="handleButtonStaStop(this)" id="enc6stop">STOP</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc6get">GET</button></td>
+			<td><button onclick="handleButtonGetSet(this)" id="enc6set">SET</button></td>			
+        </tr>
 
 
     </tbody>
@@ -184,11 +211,17 @@ socket.on("message_test", function(data){
 	}
 });
 
+
 const valid_id_HTML= ["enc1stat", "enc1ffreport", "enc2stat", "enc2ffreport",
-                    "enc3stat", "enc3ffreport", "enc4stat", "enc4ffreport"]
+                    "enc3stat", "enc3ffreport", "enc4stat", "enc4ffreport",
+                    "enc5stat", "enc5ffreport", "enc6stat", "enc6ffreport",
+                    "enc1stat_pid", "enc2stat_pid", "enc3stat_pid", "enc4stat_pid", 
+                    "enc5stat_pid", "enc6stat_pid" ]
+
+
 const valid_id_text = ["now"]
 const valid_id_value = ["enc1title", "id_param", "id_timetable", "enginemsg",
-                    "enc2title", "enc3title", "enc4title"]
+                    "enc2title", "enc3title", "enc4title", "enc5title", "enc6title"]
 
 socket.on("message", function(data){
     console.log(data);
@@ -237,7 +270,7 @@ function handleButtonClick(button) {
 
 function handleButtonStaStop(button) {
 	socket.emit("message", {"cmd" : button.id, "data" : {}});
-    if (["enc1start", "enc2start", "enc3start", "enc4start"].includes(button.id))
+    if (["enc1start", "enc2start", "enc3start", "enc4start", "enc5start", "enc6start"].includes(button.id))
     {
         update_video();
     }
@@ -248,7 +281,10 @@ function handleButtonGetSet(button) {
 	var dict_title = {"enc1get" : "enc1title", "enc1set" : "enc1title",
             "enc2get" : "enc2title", "enc2set" : "enc2title",
             "enc3get" : "enc3title", "enc3set" : "enc3title",
-            "enc4get" : "enc4title", "enc4set" : "enc4title" }
+            "enc4get" : "enc4title", "enc4set" : "enc4title", 
+            "enc5get" : "enc5title", "enc5set" : "enc5title", 
+            "enc6get" : "enc6title", "enc6set" : "enc6title",
+            }
 	var param = document.getElementById("id_param").value;
 	var timetb = document.getElementById("id_timetable").value;
 	var title = document.getElementById(dict_title[button.id]).value;
@@ -300,10 +336,10 @@ function on_simple_btn(button){
 <table>
     <thead>
         <tr>
-            <th style="width: 25%;">rtmp://127.0.0.1/live/enc1</th>
-            <th style="width: 25%;">rtmp://127.0.0.1/live/enc2</th>
-            <th style="width: 25%;">rtmp://127.0.0.1/live/enc3</th>
-            <th style="width: 25%;">rtmp://127.0.0.1/live/enc4</th>
+            <th style="width: 25%;">rtmp://127.0.0.1:8935/live/enc1</th>
+            <th style="width: 25%;">rtmp://127.0.0.1:8935/live/enc2</th>
+            <th style="width: 25%;">rtmp://127.0.0.1:8935/live/enc3</th>
+            <th style="width: 25%;">rtmp://127.0.0.1:8935/live/enc4</th>
         </tr>
     </thead>
     <tbody id="table-videowin">
@@ -319,10 +355,10 @@ function on_simple_btn(button){
 
 <script>
 let host=window.location.hostname
-const dict_video = {'videoElement1' : 'http://'+host+':8000/live/enc1.flv',
-            'videoElement2' : 'http://'+host+':8000/live/enc2.flv',
-            'videoElement3' : 'http://'+host+':8000/live/enc3.flv',
-            'videoElement4' : 'http://'+host+':8000/live/enc4.flv'}
+const dict_video = {'videoElement1' : 'http://'+host+':8936/live/enc1.flv',
+            'videoElement2' : 'http://'+host+':8936/live/enc2.flv',
+            'videoElement3' : 'http://'+host+':8936/live/enc3.flv',
+            'videoElement4' : 'http://'+host+':8936/live/enc4.flv'}
 
 
 function update_video(){
@@ -366,6 +402,8 @@ document.addEventListener('readystatechange', event => {
 		socket.emit("message", {"cmd" : "enc2get", "data" : {}});
 		socket.emit("message", {"cmd" : "enc3get", "data" : {}});
 		socket.emit("message", {"cmd" : "enc4get", "data" : {}});
+        socket.emit("message", {"cmd" : "enc5get", "data" : {}});
+        socket.emit("message", {"cmd" : "enc6get", "data" : {}});
 		update_video()
     }
 });

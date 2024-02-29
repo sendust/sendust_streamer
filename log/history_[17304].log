@@ -1,0 +1,268 @@
+02/29/2024, 11:06:05.746748   Start web GUI..
+02/29/2024, 11:06:05.762458   {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1/live/enc1', 'timetb': '03:00', 'title': 'rtmp source'}
+02/29/2024, 11:06:05.762458   {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}
+02/29/2024, 11:06:05.762458   {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}
+02/29/2024, 11:06:05.762458   {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}
+02/29/2024, 11:06:05.762458   {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}
+02/29/2024, 11:06:05.762458   {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}
+02/29/2024, 11:06:05.762458   Read preset from file...
+{'preset1': 'ffmpeg -f lavfi -re -i "testsrc2=size=800x720" -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n', 'preset2': '\n\nffmpeg_decklink4 -f decklink -draw_bars 0 -format_code Hi59  -channels 8 -queue_size 4000000000 -audio_depth 32 -i "DeckLink Mini Recorder"  -filter_complex "[0:v]split[vin1][vin2];[vin1]setfield=tff[vo1];[vin2]field=0[vfield];[vfield]scale=iw/4:ih/2:flags=fast_bilinear[vo2];[0:a]aresample=async=1000[are];[are]asplit=outputs=3[ain1][ain2][ain3];[ain1]channelsplit=channel_layout=7.1[ao1][ao2][ao3][ao4][ao5][ao6][ao7][ao8];[ain2]pan=4.0|c0=c0|c1=c1|c2=c2|c3=c3[apw1];[ain3]pan=4.0|c0=c4|c1=c5|c2=c6|c3=c7[apw2]" -map "[vo2]" -map "[apw1]" -map "[apw2]" -pix_fmt yuv420p -c:v mpeg2video -b:v 4000k -minrate 4000k -maxrate 4000k -bufsize 2000k -g 10 -bf 0 -c:a ac3 -ac 4 -f mpegts -t 4:00:00 "udp://232.100.1.101:60000?ttl=0" -map "[vo1]" -map "[ao1]" -map "[ao2]" -map "[ao3]" -map "[ao4]" -map "[ao5]" -map "[ao6]" -map "[ao7]" -map "[ao8]" -pix_fmt yuv422p -profile:v 0 -level:v 2 -b:v 50000k -maxrate 50000k -minrate 50000k -bufsize 20000k -flags +ildct+ilme+cgop -top 1 -g 15 -bf 2 -sc_threshold 1000000000 -color_primaries 1 -color_trc 1 -colorspace 1 -c:v mpeg2video -acodec pcm_s24le -t 4:00:00 -vtag xd5b "%capturefile%.mov"\n\n\n\ngoto again\n\n\nffmpeg_decklink4 -f decklink -format_code Hi59  -draw_bars 0  -channels 8 -queue_size 4000000000 -audio_depth 32 -i "DeckLink Mini Recorder"  -t 04:00:00 -timecode %time% -pix_fmt yuv422p -c:v mpeg2video -profile:v 0 -level:v 2 -b:v 50000k -maxrate 50000k -minrate 50000k -bufsize 20000k -flags +ildct+ilme -top 1 -g 15 -bf 2 -color_primaries 1 -color_trc 1 -colorspace 1 -filter_complex "[0:v]setfield=tff;[0:a]channelsplit=channel_layout=7.1" -acodec pcm_s24le "%capturefile%.mov"\n\n\n', 'preset3': 'ffmpeg.exe -y -f dshow -r 29.97 -video_size 1920x1080 -rtbufsize 700M -framerate 29.97 -top 1 -pixel_format uyvy422 -sample_rate 48000 -sample_size 16 -channels 8 -i "video=Decklink Video Capture:audio=Decklink Audio Capture"  -timecode %time% -pix_fmt yuv422p -c:v mpeg2video -profile:v 0 -level:v 2 -b:v 50000k -maxrate 50000k -minrate 50000k -bufsize 20000k -flags +ildct+ilme -top 1 -g 15 -bf 2 -color_primaries 1 -color_trc 1 -colorspace 1 -filter_complex "[0:0]setfield=tff;channelsplit=channel_layout=8" -acodec pcm_s16le "%mytimestamp%_XDCAM_50Mbps_8CH.mxf"\n\n\nffmpeg.exe -y -f dshow -r 29.97 -video_size 1920x1080 -rtbufsize 700M -framerate 29.97 -top 1 -pixel_format uyvy422 -sample_rate 48000 -sample_size 16 -channels 2 -i "video=Decklink Video Capture:audio=Decklink Audio Capture"  -timecode %time% -pix_fmt yuv422p -map [v2] -c:v mpeg2video -profile:v 0 -level:v 2 -b:v 11000k -bf 2 -g 15 -filter_complex "[0:0]yadif=0:-1:0[v1];[v1]scale=1280:720[v2];channelsplit=channel_layout=2[MA:0][MA:1];[MA:0][MA:1]amerge[a1]" -map [a1] -acodec mp3 -ac 2 "%mytimestamp%_MPEG2_2_channel.ts"', 'preset4': '\n#ffmpeg.exe -y -f dshow -video_size 1920x1080 -rtbufsize 700M -framerate 29.97 -top 1 -pixel_format uyvy422 -use_wallclock_as_timestamps 1 -sample_rate 48000 -sample_size 16 -channels 2 -i "video=Decklink Video Capture:audio=Decklink Audio Capture"  -timecode %time% -pix_fmt yuv422p -map [v2] -c:v libx264 -preset fast -crf 28 -filter_complex "[0:0]yadif=0:-1:0[v1];[v1]scale=1280:720[v2];channelsplit=channel_layout=2[MA:0][MA:1];[MA:0][MA:1]amerge[a1]" -map [a1] -acodec mp3 -ac 2 -f mpegts "%mytimestamp%_x264_stereo.ts"\n\n\nffmpeg -format_code Hi59 -f decklink  -i \'DeckLink Studio 4K\' -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -an -f flv rtmp://127.0.0.1/live/enc2', 'preset5': 'ffmpeg2016.exe -f dshow -r ntsc -video_size 1920x1080 -rtbufsize 300M -framerate ntsc -top 1 -pixel_format uyvy422 -sample_rate 48000 -sample_size 16 -channels 2 -i "video=Decklink Video Capture:audio=Decklink Audio Capture" -pix_fmt yuv420p -c:v libx264 -crf 25 -preset:v veryfast -tune zerolatency -filter_complex "[0:0]yadif=0:-1:0[v1];[v1]scale=1280:720;channelsplit=channel_layout=2" -c:a aac -ab 128k -ac 2 -f flv rtmp://10.10.108.221:1935/sbsonair', 'preset6': 'ffmpeg -i test6', 'preset7': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n# This is comment 2\n#ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n#ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n#ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -g 5 -c:v h264 -b:v 2000k -f flv rtmp://127.0.0.1/live/enc1\n', 'preset8': 'ffmpeg -i test8', 'preset9': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=800x720 -c:v mpeg2video -f mpegts -an http://127.0.0.1:8000/live1\n# This is comment 2', 'preset10': 'ffmpeg -f dshow -list_devices 1 -i dummy -f null'}
+02/29/2024, 11:06:08.741478   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:06:08.748849   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:06:08.752839   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:06:08.753836   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:06:08.754833   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:06:08.755832   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:06:13.016529   decode protcol ->  {'cmd': 'enc4start', 'data': {}}
+02/29/2024, 11:06:13.018456   [enc4 run with param] ==> 
+ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4
+02/29/2024, 11:06:13.039515   [enc4stat] ## Duration detected....  N/A, start:
+02/29/2024, 11:06:15.024051   [enc4]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "testsrc=size=1280x720" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4
+
+02/29/2024, 11:06:16.248267   decode protcol ->  {'cmd': 'enc4stop', 'data': {}}
+02/29/2024, 11:06:16.250262   [enc4]Stop encoder..
+02/29/2024, 11:06:16.283822   [enc4stat] ffmpeg process exited with error code 1
+02/29/2024, 11:06:16.285827   [enc4 Finish encoder
+02/29/2024, 11:06:16.286762   [enc4] Finish encoder. escape from running loop
+02/29/2024, 11:06:16.882433   decode protcol ->  {'cmd': 'enc4start', 'data': {}}
+02/29/2024, 11:06:16.884538   [enc4 run with param] ==> 
+ffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4
+02/29/2024, 11:06:16.910749   [enc4stat] ## Duration detected....  N/A, start:
+02/29/2024, 11:06:18.893710   [enc4]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "testsrc=size=1280x720" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4
+
+02/29/2024, 11:06:26.710357   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:27.059712   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:27.251633   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:27.420772   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:27.906436   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:28.068976   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:28.220042   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:28.351941   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:28.757728   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:28.900790   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:29.037695   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:29.434644   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:29.590459   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:06:37.106926   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '5번 인코더'}}
+02/29/2024, 11:06:42.061053   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '6번 인코더'}}
+02/29/2024, 11:06:42.238571   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '6번 인코더'}}
+02/29/2024, 11:06:42.391389   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '6번 인코더'}}
+02/29/2024, 11:06:51.256011   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': '6번 인코더'}}
+02/29/2024, 11:06:51.605051   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': '6번 인코더'}}
+02/29/2024, 11:06:55.340774   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': '6번 인코더'}}
+02/29/2024, 11:06:55.564678   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': '6번 인코더'}}
+02/29/2024, 11:06:57.619544   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:07:01.765105   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:07:03.017611   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:03.028582   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:03.030576   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:03.032571   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:03.032571   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:03.034565   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:03.432122   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:03.441098   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:03.444540   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:03.444393   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:03.444762   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:03.444762   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:03.603911   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:03.614498   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:03.617955   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:03.617955   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:03.617955   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:03.617955   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:03.842412   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:03.854742   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:03.854742   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:03.854742   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:03.854742   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:03.854742   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:04.725158   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:07:05.120445   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:07:05.314343   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:07:06.230641   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:07:07.113296   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:08.125993   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:08.515058   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:14.488326   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:17.104493   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:07:17.419914   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:07:24.129037   decode protcol ->  {'cmd': 'enc6stop', 'data': {}}
+02/29/2024, 11:07:24.407665   decode protcol ->  {'cmd': 'enc6stop', 'data': {}}
+02/29/2024, 11:07:24.887077   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 11:07:25.126888   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 11:07:25.300264   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 11:07:25.475184   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 11:07:25.652358   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 11:07:25.931659   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 11:07:26.373139   decode protcol ->  {'cmd': 'enc6stop', 'data': {}}
+02/29/2024, 11:07:26.550317   decode protcol ->  {'cmd': 'enc6stop', 'data': {}}
+02/29/2024, 11:07:26.711611   decode protcol ->  {'cmd': 'enc6stop', 'data': {}}
+02/29/2024, 11:07:26.867191   decode protcol ->  {'cmd': 'enc6stop', 'data': {}}
+02/29/2024, 11:07:29.194819   decode protcol ->  {'cmd': 'enc4stop', 'data': {}}
+02/29/2024, 11:07:29.195802   [enc4]Stop encoder..
+02/29/2024, 11:07:29.232736   [enc4stat] ffmpeg process exited with error code 1
+02/29/2024, 11:07:29.233733   [enc4 Finish encoder
+02/29/2024, 11:07:29.234730   [enc4] Finish encoder. escape from running loop
+02/29/2024, 11:07:32.213208   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:37.884955   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:37.887947   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:37.896923   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:37.898015   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:37.898918   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:37.901911   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:38.305955   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:38.321599   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:38.324591   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:38.325589   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:38.327583   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:38.328580   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:38.369727   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:38.384748   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:38.388065   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:38.388065   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:38.388065   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:38.388065   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:38.655849   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:41.286476   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:07:42.236916   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:43.057790   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:43.412682   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 11:07:43.985738   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:43.985738   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:43.999125   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:44.000117   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:44.001116   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:44.001116   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:07:44.208441   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:07:44.217417   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:07:44.222404   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:07:44.222404   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:07:44.223401   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:07:44.225395   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:08:21.053331   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:08:21.061309   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:08:21.062307   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:08:21.067303   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:08:21.070285   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:08:21.068303   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:08:21.585332   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:08:21.596248   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:08:21.602233   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:08:21.603228   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:08:21.603228   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:08:21.605271   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:08:21.970161   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:08:21.974150   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:08:21.980850   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:08:21.980850   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:08:21.981847   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:08:21.983139   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:08:22.574373   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:08:22.587208   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:08:22.593194   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:08:22.594189   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:08:22.594189   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:08:22.596183   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:08:23.111194   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:08:31.285717   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:08:34.548115   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:35.036600   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:35.226533   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:35.400526   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:35.553826   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:35.701662   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:36.034701   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:36.361312   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:36.552428   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:36.738301   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:36.936718   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:37.135867   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:37.493332   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:37.723526   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:37.962362   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:40.333185   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 11:08:52.789036   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:54.775942   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:55.209122   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:55.669501   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:55.999831   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:56.222163   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:08:59.156621   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:09:04.804341   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': '인코더6'}}
+02/29/2024, 11:09:05.168641   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc1\n# This is comment 2', 'timetb': '03:00', 'title': '인코더6'}}
+02/29/2024, 11:09:05.459757   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:05.478876   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:05.480870   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:05.481928   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:05.482866   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:05.483863   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:05.681192   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:05.687274   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:05.688911   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:05.688911   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:05.688911   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:05.688911   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:06.071590   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:09:06.530461   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:09:06.756399   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:09:07.040483   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:07.053250   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:07.053455   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:07.053455   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:07.053455   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:07.053455   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:07.324533   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:07.338356   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:07.341348   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:07.341348   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:07.344341   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:07.342345   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:07.662532   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:07.675752   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:07.677747   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:07.678744   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:07.679743   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:07.681739   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:08.295062   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:08.303041   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:08.309103   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:08.310118   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:08.311065   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:08.313015   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:08.563648   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:08.573482   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:08.575922   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:08.578008   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:08.578008   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:08.578008   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:08.823211   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:08.825202   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:08.825202   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:08.825202   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:08.825202   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:08.825202   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:09.073402   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:09.073402   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:09.089710   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:09.089710   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:09.090696   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:09.092690   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:34.580898   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:34.587879   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:34.597852   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:34.598849   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:34.599847   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:34.601842   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:34.831184   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 11:09:34.833014   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 11:09:34.843422   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 11:09:34.843422   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 11:09:34.845411   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 11:09:34.847495   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 11:09:35.221791   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}
+02/29/2024, 11:09:35.530665   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': ''}}

@@ -1,0 +1,4 @@
+Command line:
+ffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4
+[flv @ 0000025c32a03d00] Failed to update header with correct duration.
+[flv @ 0000025c32a03d00] Failed to update header with correct filesize.

@@ -93,16 +93,18 @@ class encoder:
         self.name = name
         self.keep_running = True
         self.isrunning = False
-        self.size_ffreport_before = 5000
+        self.size_ffreport_before = 15000
         self.json_param_f = name + 'param.json'
         self.param = {}
 
     def start(self):
         if self.isrunning:
             updatelog(f'[{self.name}]Already running. reason : FLAG isrunning !')
+            send_eneginemsg(f'[{self.name}]Already running. reason : FLAG isrunning !')
             return
         if self.name in get_all_threadname():
             updatelog(f'[{self.name}]Already running. reason : threadname')
+            send_eneginemsg(f'[{self.name}]Already running. reason : threadname')
             return
         self.thread = threading.Thread(target=self.run, name=f'{self.name}_enc')
         self.thread.start()
@@ -122,7 +124,7 @@ class encoder:
             self.timer(self.watchdog, 2)
             t_start = time.time()
             run_str = self.decode_param(self.param.get("param"))
-            self.size_ffreport_before = 5000
+            self.size_ffreport_before = 15000
             updatelog(f'[{self.name} run with param] ==> \n{run_str}')
             try:
                 self.enc.runwait(run_str)
@@ -190,7 +192,7 @@ class encoder:
         size_delta_ffreport = size_ffreport - self.size_ffreport_before
         if size_delta_ffreport:
             updatelog(f'[{self.name}]ffreport size changed - \n{self.read_ffreport()}')
-        if size_delta_ffreport > 200:
+        if size_delta_ffreport > 300:
             updatelog(f'[{self.name}]ffreport delta has abnormal size.. kill encoder')
             self.kill()
             time.sleep(0.1)
@@ -278,7 +280,7 @@ class preset:
         
 
 def decode_protocol(protocol):
-    global pst, enc1, enc2, enc3, enc4, keep_run
+    global pst, enc1, enc2, enc3, enc4, enc5, enc6, keep_run
     updatelog(f'decode protcol ->  {protocol}')
     try:
         cmd = protocol.get("cmd")
@@ -294,23 +296,23 @@ def decode_protocol(protocol):
     
     if cmd in ["halt", "shutdown"]:
         keep_run = False
-        for each in [enc1, enc2, enc3, enc4]:
+        for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
             each.stop()
         sys.exit(1)
     
     if cmd in ["startall", "allstart"]:
-        for each in [enc1, enc2, enc3, enc4]:
+        for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
             updatelog(f'{each.name} start encoder from command..')
             each.start()
         return
         
     if cmd in ["stopall", "allstop"]:
-        for each in [enc1, enc2, enc3, enc4]:
+        for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
             each.stop()
         return
 
     if cmd in ["killall", "allkill"]:
-        for each in [enc1, enc2, enc3, enc4]:
+        for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
             each.kill()
         return
 
@@ -333,17 +335,24 @@ def decode_protocol(protocol):
         return
     
     dict_cmd_start = {"enc1start" : enc1.start, "enc2start" : enc2.start,
-                    "enc3start" : enc3.start, "enc4start" : enc4.start}
+                    "enc3start" : enc3.start, "enc4start" : enc4.start,
+                    "enc5start" : enc5.start, "enc6start" : enc6.start}
+                    
     dict_cmd_stop = {"enc1stop" : enc1.stop, "enc2stop" : enc2.stop,
-                    "enc3stop" : enc3.stop, "enc4stop" : enc4.stop}
+                    "enc3stop" : enc3.stop, "enc4stop" : enc4.stop,
+                    "enc5stop" : enc5.stop, "enc6stop" : enc6.stop}
+                    
     dict_cmd_get = {"enc1get" : enc1, "enc2get" : enc2,
-                    "enc3get" : enc3, "enc4get" : enc4}
+                    "enc3get" : enc3, "enc4get" : enc4,
+                    "enc5get" : enc5, "enc6get" : enc6}
                     
     dict_cmd_set = {"enc1set" : enc1, "enc2set" : enc2,
-                    "enc3set" : enc3, "enc4set" : enc4}               
+                    "enc3set" : enc3, "enc4set" : enc4,
+                    "enc5set" : enc5, "enc6set" : enc6 }               
 
     dict_cmd_get_title = {"enc1get" : "enc1title", "enc2get" : "enc2title",
-                        "enc3get" : "enc3title", "enc4get" : "enc4title"}
+                        "enc3get" : "enc3title", "enc4get" : "enc4title",
+                        "enc5get" : "enc5title", "enc6get" : "enc6title"}
 
     if cmd in dict_cmd_start:
         fn = dict_cmd_start.get(cmd)
@@ -387,6 +396,11 @@ def sio_encoder_report(data):
     global wg
     wg.send(data)
 
+def send_eneginemsg(data):
+    global wg
+    wg.send({"enginemsg" : data})
+
+
 def get_all_threadname():
     tlist = [t.name for t in threading.enumerate()]
     return tlist
@@ -399,8 +413,10 @@ enc1 = encoder("enc1")
 enc2 = encoder("enc2")
 enc3 = encoder("enc3")
 enc4 = encoder("enc4")
+enc5 = encoder("enc5")
+enc6 = encoder("enc6")
 
-for each in [enc1, enc2, enc3, enc4]:
+for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
     updatelog(each.load_param())
 
 wg.send({"enginemsg" : "Encoder Created...\nApplication Started...."})
@@ -417,6 +433,6 @@ try:
         time.sleep(1)
 except KeyboardInterrupt:
     keep_run = False
-    for each in [enc1, enc2, enc3, enc4]:
+    for each in [enc1, enc2, enc3, enc4, enc5, enc6]:
         each.stop()
         

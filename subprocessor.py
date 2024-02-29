@@ -22,7 +22,7 @@ class launcher:
     def __init__(self):
         self.str_run = ''
         self.name_thread = ''
-        self.timeout = 43200 # 12 hours
+        self.timeout = 259200 # 72 hours
         self.out_position = 0
         self.out_progress = 'undetermined..'
         self.duration = 0
@@ -34,6 +34,7 @@ class launcher:
         self.updatelog = print
         self.osenv = {}     # dict type.. {"FFREPORT" : f'file=FFMPEG_MXF_{self.nameonly}.LOG:level=32'}
         self.workdir = os.path.join(os.getcwd(), "debug")
+        self.pid = -1
     
     def set_name(self, name):
         self.name_thread = name
@@ -74,6 +75,7 @@ class launcher:
             self.wtimer.start()
             
     def run(self, str_run):
+        self.pid = -1
         self.tm_start = time.time()
         self.out_position = 0
         self.str_run = str_run
@@ -88,6 +90,7 @@ class launcher:
             self.wtimer.start()
     
     def runwait(self, str_run):
+        self.pid = -1
         self.tm_start = time.time()
         self.out_position = 0
         # Setup os env variable
@@ -131,10 +134,17 @@ class launcher:
     def get_pipe(self):
         while ((time.time() - self.tm_start) < self.timeout):
 # Check if child process has terminated. Set and return returncode attribute. Otherwise, returns None.
-            output = self.process.stdout.readline()   
+            output = self.process.stdout.readline()
             if output == '' and self.process.poll() is not None:
+                self.pid = -1
+                self.fn_info({f'{self.name_thread}_pid' : self.pid})
                 break
             if output:
+                try:
+                    self.pid = self.process.pid
+                    self.fn_info({f'{self.name_thread}_pid' : self.pid})
+                except:
+                    self.pid = -1
                 try:
                     if output.startswith("frame="):
                         self.decode_ffmpegoutput(output)
