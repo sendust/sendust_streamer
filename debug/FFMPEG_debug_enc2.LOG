@@ -1,4 +1,5 @@
 Command line:
 ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i "DeckLink Studio 4K" -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2
-[aist#0:0/pcm_s32le @ 0000017c8d3c2bc0] Guessed Channel Layout: stereo
-[libx264 @ 0000017c8d3bf3c0] VBV maxrate unspecified, assuming CBR
+[aist#0:0/pcm_s32le @ 0000016377f32bc0] Guessed Channel Layout: stereo
+[libx264 @ 0000016377f2f3c0] VBV maxrate unspecified, assuming CBR
+[libx264 @ 0000016377f2f3c0] VBV underflow (frame 218371, -96936 bits)
