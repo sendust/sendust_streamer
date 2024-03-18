@@ -3,7 +3,7 @@
 #  node, express, ffmpeg
 #   2024/2/17   first code.
 #   2024/2/21   Improve encoder thread handling, logging, more protocol commands
-#
+#   2024/3/18   ffreport message tolerance 300 -> 3000
 
 
 
@@ -192,7 +192,7 @@ class encoder:
         size_delta_ffreport = size_ffreport - self.size_ffreport_before
         if size_delta_ffreport:
             updatelog(f'[{self.name}]ffreport size changed - \n{self.read_ffreport()}')
-        if size_delta_ffreport > 300:
+        if size_delta_ffreport > 3000:   # tee, DTS error message > 800  (very long)
             updatelog(f'[{self.name}]ffreport delta has abnormal size.. kill encoder')
             self.kill()
             time.sleep(0.1)
@@ -206,6 +206,15 @@ class encoder:
         if now in tm_reset:
             updatelog(f'[{self.name}]killed, reason=reset time {tm_reset}')
             self.kill()
+            
+# consider tee long message...
+#[aac @ 0000026cb95b4e40] Queue input is backward in time
+#[tee @ 0000026cb956fc40] Non-monotonous DTS in output stream 0:1; previous: 143363, current: 141678; changing to 143364. This may result in incorrect timestamps in the output file.
+#[tee @ 0000026cb956fc40] Non-monotonous DTS in output stream 0:1; previous: 143364, current: 142702; changing to 143365. This may result in incorrect timestamps in the output file.
+#[aac @ 0000026cc6b0b640] Queue input is backward in time
+#[tee @ 0000026cb956fc40] Non-monotonous DTS in output stream 0:2; previous: 143363, current: 141678; changing to 143364. This may result in incorrect timestamps in the output file.
+#[tee @ 0000026cb956fc40] Non-monotonous DTS in output stream 0:2; previous: 143364, current: 142702; changing to 143365. This may result in incorrect timestamps in the output file.
+
 
     def load_param(self):
         with open(self.json_param_f, "r") as f:

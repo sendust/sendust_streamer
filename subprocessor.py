@@ -157,7 +157,8 @@ class launcher:
                 except Exception as e:
                     print(e)
         
-        # There is no stdout and process finished       
+        # There is no stdout and process finished
+        print("///////////   Finish get pipe.....")
         self.finish()
 
     def finish(self):

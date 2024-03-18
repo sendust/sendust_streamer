@@ -905,3 +905,593 @@ ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 400000
 02/29/2024, 15:50:15.304153   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
 02/29/2024, 15:50:15.704173   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'change title encoder 3'}}
 02/29/2024, 15:50:16.156010   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:07:44.842615   decode protcol ->  {'cmd': 'enc2start', 'data': {}}
+02/29/2024, 16:07:44.845037   [enc2 run with param] ==> 
+ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2
+02/29/2024, 16:07:44.991140   [enc2stat] ## Duration detected....  N/A, start:
+02/29/2024, 16:07:46.852188   [enc2]ffreport size changed - 
+Command line:
+ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i "DeckLink Studio 4K" -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2
+[aist#0:0/pcm_s32le @ 0000029a56a3a740] Guessed Channel Layout: stereo
+[libx264 @ 0000029a56a62580] VBV maxrate unspecified, assuming CBR
+
+02/29/2024, 16:07:52.646346   decode protcol ->  {'cmd': 'enc3start', 'data': {}}
+02/29/2024, 16:07:52.648800   [enc3 run with param] ==> 
+ffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 16:07:52.668374   [enc3stat] ## Duration detected....  N/A, start:
+02/29/2024, 16:07:54.653925   [enc3]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "testsrc2=size=1280x720" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 16:07:58.303976   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:07:58.952753   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:07:59.314243   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:07:59.660116   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:07:59.964905   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:08:00.869265   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:08:01.381697   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:08:07.257901   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:08:07.698519   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:08:07.940396   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:08:08.524589   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:08:09.982580   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:08:15.874428   decode protcol ->  {'cmd': 'enc4start', 'data': {}}
+02/29/2024, 16:08:15.875427   [enc4 run with param] ==> 
+ffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1
+02/29/2024, 16:08:17.601907   [enc4stat] ## Duration detected....  00:00:00.00
+02/29/2024, 16:08:17.882152   [enc4]ffreport size changed - 
+Command line:
+ffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1
+
+02/29/2024, 16:08:25.622522   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:08:26.123948   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:08:26.528151   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:08:27.499066   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 16:08:27.511534   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 16:08:27.512576   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 16:08:27.512576   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 16:08:27.515417   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 16:08:27.515890   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 16:42:00.085897   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 16:42:00.099119   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 16:42:00.101113   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 16:42:00.101113   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 16:42:00.102111   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 16:42:00.103108   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 16:42:12.050877   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:42:12.683577   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:42:13.234365   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:42:14.354701   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:42:14.786847   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 16:42:15.450858   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:42:16.187085   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:42:16.914960   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:42:17.305827   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:42:20.274995   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:42:20.674830   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 16:42:21.098812   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:42:21.434743   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:42:22.035034   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:42:22.402382   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 16:42:22.819509   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:42:23.218753   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:42:23.666482   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:42:24.026305   decode protcol ->  {'cmd': 'enc1get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'rtmp source'}}
+02/29/2024, 16:42:24.435040   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:42:24.810259   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:42:25.162297   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:42:25.546999   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 16:42:25.955616   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:42:36.170932   decode protcol ->  {'cmd': 'getdshow', 'data': {}}
+02/29/2024, 16:42:36.171979   show dshow devices..
+02/29/2024, 16:42:36.539924   [dshow @ 000002d3bc89e740] "Blackmagic WDM Capture (3)" (audio, video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&b2ba125&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture3"
+[dshow @ 000002d3bc89e740] "Blackmagic WDM Capture (5)" (audio, video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&2f9ed5ba&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture5"
+[dshow @ 000002d3bc89e740] "Blackmagic WDM Capture" (audio, video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_pnp_\\?\decklink#avstream#5&16b8167b&1&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture1"
+[dshow @ 000002d3bc89e740] "Blackmagic WDM Capture (2)" (audio, video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&3390ecf8&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture2"
+[dshow @ 000002d3bc89e740] "Blackmagic WDM Capture (4)" (audio, video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&73989e7&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture4"
+[dshow @ 000002d3bc89e740] "Decklink Video Capture (3)" (video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{20722FC4-9EBC-47B9-80B4-6A2ED4D27ECF}"
+[dshow @ 000002d3bc89e740] "Decklink Video Capture" (video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{44A8B5C7-13B6-4211-BD40-35B629D9E6DF}"
+[dshow @ 000002d3bc89e740] "Decklink Video Capture (5)" (video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{929CE8E6-96DB-4FE0-980A-83DAB2D2AF31}"
+[dshow @ 000002d3bc89e740] "OBS Virtual Camera" (none)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{A3FCE0F5-3493-419F-958A-ABA1250EC20B}"
+[dshow @ 000002d3bc89e740] "Decklink Video Capture (4)" (video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{B3980D18-10D4-4045-9AF7-91EF330AEBF2}"
+[dshow @ 000002d3bc89e740] "Decklink Video Capture (2)" (video)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{CE3FF814-04C1-4827-9F18-426203E9B1B3}"
+[dshow @ 000002d3bc89e740] "라인 입력(Blackmagic DeckLink 8K Pro (1) Audio)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{DAB45C21-0EA4-47D4-95ED-821808450A85}"
+[dshow @ 000002d3bc89e740] "Decklink Audio Capture (2)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{1BCC3EF4-724F-4A45-B61D-8D4BBF32C5BF}"
+[dshow @ 000002d3bc89e740] "Decklink Audio Capture (4)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{1EF51542-B849-4337-B7AE-C980C13F86BF}"
+[dshow @ 000002d3bc89e740] "Decklink Audio Capture" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{AAA22F7E-5AA0-49D9-8C8D-B52B1AA92EB7}"
+[dshow @ 000002d3bc89e740] "Decklink Audio Capture (3)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{BC90EE8C-F8DC-4776-8DCF-24929C13F9D2}"
+[dshow @ 000002d3bc89e740] "Decklink Audio Capture (5)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{DE6DB48D-66EE-477A-BE4B-522B2253CD95}"
+[dshow @ 000002d3bc89e740] "라인 입력(Blackmagic DeckLink Studio 4K Audio)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{0E495623-E31A-4CD4-9685-06C604DD2C04}"
+[dshow @ 000002d3bc89e740] "라인 입력(Blackmagic DeckLink 8K Pro (2) Audio)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{5EE27AEA-C8CD-4754-A699-A34510F74119}"
+[dshow @ 000002d3bc89e740] "라인 입력(Blackmagic DeckLink 8K Pro (4) Audio)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{8FC5678C-3FA3-4A72-B015-01AA3CEF54E8}"
+[dshow @ 000002d3bc89e740] "라인 입력(Blackmagic DeckLink 8K Pro (3) Audio)" (audio)
+[dshow @ 000002d3bc89e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{DDB0F20E-2AD4-4510-96D9-95ADE91E7371}"
+[in#0 @ 000002d3bc88ad40] Error opening input: Immediate exit requested
+
+02/29/2024, 16:42:37.770438   decode protcol ->  {'cmd': 'getdecklink', 'data': {}}
+02/29/2024, 16:42:37.771435   show decklink devices..
+02/29/2024, 16:42:37.913001   [Blackmagic DeckLink indev @ 000001db2f1eee80] The "list_devices" option is deprecated: use ffmpeg -sources decklink instead
+[decklink @ 000001db2f1dab00] Blackmagic DeckLink input devices:
+[decklink @ 000001db2f1dab00] 	'DeckLink Studio 4K'
+[decklink @ 000001db2f1dab00] 	'DeckLink 8K Pro (1)'
+[decklink @ 000001db2f1dab00] 	'DeckLink 8K Pro (2)'
+[decklink @ 000001db2f1dab00] 	'DeckLink 8K Pro (3)'
+[decklink @ 000001db2f1dab00] 	'DeckLink 8K Pro (4)'
+[in#0 @ 000001db2f1da940] Error opening input: Immediate exit requested
+
+02/29/2024, 16:42:39.707036   decode protcol ->  {'cmd': 'getdecklink', 'data': {}}
+02/29/2024, 16:42:39.709032   show decklink devices..
+02/29/2024, 16:42:39.853324   [Blackmagic DeckLink indev @ 00000224be92ee80] The "list_devices" option is deprecated: use ffmpeg -sources decklink instead
+[decklink @ 00000224be91ab00] Blackmagic DeckLink input devices:
+[decklink @ 00000224be91ab00] 	'DeckLink Studio 4K'
+[decklink @ 00000224be91ab00] 	'DeckLink 8K Pro (1)'
+[decklink @ 00000224be91ab00] 	'DeckLink 8K Pro (2)'
+[decklink @ 00000224be91ab00] 	'DeckLink 8K Pro (3)'
+[decklink @ 00000224be91ab00] 	'DeckLink 8K Pro (4)'
+[in#0 @ 00000224be91a940] Error opening input: Immediate exit requested
+
+02/29/2024, 16:42:41.762782   decode protcol ->  {'cmd': 'getdecklink', 'data': {}}
+02/29/2024, 16:42:41.764777   show decklink devices..
+02/29/2024, 16:42:41.903968   [Blackmagic DeckLink indev @ 000001e68b72ee80] The "list_devices" option is deprecated: use ffmpeg -sources decklink instead
+[decklink @ 000001e68b71ab00] Blackmagic DeckLink input devices:
+[decklink @ 000001e68b71ab00] 	'DeckLink Studio 4K'
+[decklink @ 000001e68b71ab00] 	'DeckLink 8K Pro (1)'
+[decklink @ 000001e68b71ab00] 	'DeckLink 8K Pro (2)'
+[decklink @ 000001e68b71ab00] 	'DeckLink 8K Pro (3)'
+[decklink @ 000001e68b71ab00] 	'DeckLink 8K Pro (4)'
+[in#0 @ 000001e68b71a940] Error opening input: Immediate exit requested
+
+02/29/2024, 16:42:43.162740   decode protcol ->  {'cmd': 'getdshow', 'data': {}}
+02/29/2024, 16:42:43.163736   show dshow devices..
+02/29/2024, 16:42:43.416740   [dshow @ 0000026d5098e740] "Blackmagic WDM Capture (3)" (audio, video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&b2ba125&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture3"
+[dshow @ 0000026d5098e740] "Blackmagic WDM Capture (5)" (audio, video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&2f9ed5ba&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture5"
+[dshow @ 0000026d5098e740] "Blackmagic WDM Capture" (audio, video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_pnp_\\?\decklink#avstream#5&16b8167b&1&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture1"
+[dshow @ 0000026d5098e740] "Blackmagic WDM Capture (2)" (audio, video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&3390ecf8&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture2"
+[dshow @ 0000026d5098e740] "Blackmagic WDM Capture (4)" (audio, video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_pnp_\\?\decklink#avstream#6&73989e7&0&0#{65e8773d-8f56-11d0-a3b9-00a0c9223196}\decklinkcapture4"
+[dshow @ 0000026d5098e740] "Decklink Video Capture (3)" (video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{20722FC4-9EBC-47B9-80B4-6A2ED4D27ECF}"
+[dshow @ 0000026d5098e740] "Decklink Video Capture" (video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{44A8B5C7-13B6-4211-BD40-35B629D9E6DF}"
+[dshow @ 0000026d5098e740] "Decklink Video Capture (5)" (video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{929CE8E6-96DB-4FE0-980A-83DAB2D2AF31}"
+[dshow @ 0000026d5098e740] "OBS Virtual Camera" (none)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{A3FCE0F5-3493-419F-958A-ABA1250EC20B}"
+[dshow @ 0000026d5098e740] "Decklink Video Capture (4)" (video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{B3980D18-10D4-4045-9AF7-91EF330AEBF2}"
+[dshow @ 0000026d5098e740] "Decklink Video Capture (2)" (video)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{860BB310-5D01-11D0-BD3B-00A0C911CE86}\{CE3FF814-04C1-4827-9F18-426203E9B1B3}"
+[dshow @ 0000026d5098e740] "라인 입력(Blackmagic DeckLink 8K Pro (1) Audio)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{DAB45C21-0EA4-47D4-95ED-821808450A85}"
+[dshow @ 0000026d5098e740] "Decklink Audio Capture (2)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{1BCC3EF4-724F-4A45-B61D-8D4BBF32C5BF}"
+[dshow @ 0000026d5098e740] "Decklink Audio Capture (4)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{1EF51542-B849-4337-B7AE-C980C13F86BF}"
+[dshow @ 0000026d5098e740] "Decklink Audio Capture" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{AAA22F7E-5AA0-49D9-8C8D-B52B1AA92EB7}"
+[dshow @ 0000026d5098e740] "Decklink Audio Capture (3)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{BC90EE8C-F8DC-4776-8DCF-24929C13F9D2}"
+[dshow @ 0000026d5098e740] "Decklink Audio Capture (5)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_sw_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\{DE6DB48D-66EE-477A-BE4B-522B2253CD95}"
+[dshow @ 0000026d5098e740] "라인 입력(Blackmagic DeckLink Studio 4K Audio)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{0E495623-E31A-4CD4-9685-06C604DD2C04}"
+[dshow @ 0000026d5098e740] "라인 입력(Blackmagic DeckLink 8K Pro (2) Audio)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{5EE27AEA-C8CD-4754-A699-A34510F74119}"
+[dshow @ 0000026d5098e740] "라인 입력(Blackmagic DeckLink 8K Pro (4) Audio)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{8FC5678C-3FA3-4A72-B015-01AA3CEF54E8}"
+[dshow @ 0000026d5098e740] "라인 입력(Blackmagic DeckLink 8K Pro (3) Audio)" (audio)
+[dshow @ 0000026d5098e740]   Alternative name "@device_cm_{33D9A762-90C8-11D0-BD43-00A0C911CE86}\wave_{DDB0F20E-2AD4-4510-96D9-95ADE91E7371}"
+[in#0 @ 0000026d5097ad40] Error opening input: Immediate exit requested
+
+02/29/2024, 16:42:43.954646   decode protcol ->  {'cmd': 'getdecklink', 'data': {}}
+02/29/2024, 16:42:43.956640   show decklink devices..
+02/29/2024, 16:42:44.099040   [Blackmagic DeckLink indev @ 0000021b3e57ee80] The "list_devices" option is deprecated: use ffmpeg -sources decklink instead
+[decklink @ 0000021b3e56ab00] Blackmagic DeckLink input devices:
+[decklink @ 0000021b3e56ab00] 	'DeckLink Studio 4K'
+[decklink @ 0000021b3e56ab00] 	'DeckLink 8K Pro (1)'
+[decklink @ 0000021b3e56ab00] 	'DeckLink 8K Pro (2)'
+[decklink @ 0000021b3e56ab00] 	'DeckLink 8K Pro (3)'
+[decklink @ 0000021b3e56ab00] 	'DeckLink 8K Pro (4)'
+[in#0 @ 0000021b3e56a940] Error opening input: Immediate exit requested
+
+02/29/2024, 16:42:58.003983   decode protcol ->  {'cmd': 'enc1get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'rtmp source'}}
+02/29/2024, 16:42:58.938830   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:43:01.226634   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:43:01.731597   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:43:02.403403   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:43:03.027032   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:43:04.475126   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:43:05.162706   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 16:43:05.843615   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 16:43:06.234312   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 16:43:06.619082   decode protcol ->  {'cmd': 'enc2get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'decklink stduio 4k sdi'}}
+02/29/2024, 16:48:24.094862   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': "ffmpeg -format_code Hi59  -draw_bars 0  -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 1000k -an \n-f flv rtmp://127.0.0.1/live/enc2\n#ffmpeg -format_code Hi59 -f decklink  -i 'DeckLink Studio 4K' -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 5000k -an -f flv rtmp://127.0.0.1/live/enc2", 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:48:24.518194   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:48:24.822961   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:48:24.973817   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:48:25.111161   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:48:25.247685   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:52:16.432429   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:52:17.577089   decode protcol ->  {'cmd': 'enc6start', 'data': {}}
+02/29/2024, 16:52:17.578086   [enc6 run with param] ==> 
+ffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4
+02/29/2024, 16:52:17.612186   [enc6stat] ## Duration detected....  N/A, start:
+02/29/2024, 16:52:19.585361   [enc6]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4
+
+02/29/2024, 16:52:27.028635   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 16:52:27.030629   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 16:52:27.031626   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 16:52:27.031626   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 16:52:27.033621   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 16:52:27.034619   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 16:53:06.651047   [enc2]ffreport size changed - 
+Command line:
+ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i "DeckLink Studio 4K" -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2
+[aist#0:0/pcm_s32le @ 0000029a56a3a740] Guessed Channel Layout: stereo
+[libx264 @ 0000029a56a62580] VBV maxrate unspecified, assuming CBR
+[libx264 @ 0000029a56a62580] VBV underflow (frame 81544, -32539 bits)
+
+02/29/2024, 16:56:51.698935   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:56:52.364160   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:56:52.740791   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:56:53.123742   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'enc6'}}
+02/29/2024, 16:57:04.372780   decode protcol ->  {'cmd': 'enc6set', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'testsrc life'}}
+02/29/2024, 16:59:19.781760   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 16:59:20.117246   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 16:59:20.364780   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc4\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:00:04.269385   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=8 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:00:06.453309   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=8 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:07.694326   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:08.092982   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:08.596974   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:09.005550   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:09.405647   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:09.637664   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:09.853787   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:10.060809   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:10.638730   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 17:00:18.212894   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 17:00:18.540497   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 17:00:18.709394   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 17:00:18.909532   decode protcol ->  {'cmd': 'enc3get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'change title encoder 3'}}
+02/29/2024, 17:00:20.797217   decode protcol ->  {'cmd': 'enc3stop', 'data': {}}
+02/29/2024, 17:00:20.798214   [enc3]Stop encoder..
+02/29/2024, 17:00:20.838745   [enc3stat] ffmpeg process exited with error code 1
+02/29/2024, 17:00:20.840802   [enc3 Finish encoder
+02/29/2024, 17:00:20.841737   [enc3] Finish encoder. escape from running loop
+02/29/2024, 17:00:21.741206   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:00:23.645241   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:00:25.260627   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:00:25.262621   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=8 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:00:25.285560   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:00:27.270570   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=8" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:00:36.485167   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=8 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:00:41.125876   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:00:41.949558   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 17:00:41.950540   [enc5]Stop encoder..
+02/29/2024, 17:00:41.965502   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 17:00:41.967668   [enc5 Finish encoder
+02/29/2024, 17:00:41.967668   [enc5] Finish encoder. escape from running loop
+02/29/2024, 17:00:42.780392   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:00:42.782325   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:00:42.804266   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:00:44.788514   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=2" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:00:47.365817   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:00:47.368017   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:00:47.369013   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:00:47.369013   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:00:47.370010   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:00:47.371007   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:00:52.855288   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:00:52.862269   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:00:52.863269   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:00:52.864264   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:00:52.864264   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:00:52.863269   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:00:59.701558   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:00.487521   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:00.782388   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:00.990403   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:01.166093   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:01.341432   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:05.690942   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:05.698920   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:05.700914   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:05.700914   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:05.700914   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:05.702909   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:06.846251   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:06.848245   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:06.849243   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:06.848245   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:06.850241   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:06.850241   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:08.948876   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i testsrc2=size=1280x720 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5  -stats_period 0.2 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:09.373938   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:09.606456   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:09.782757   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:09.957488   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:10.109144   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:10.262991   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:10.550440   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:10.702596   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:10.870619   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:11.037670   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:11.197974   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:11.733945   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:11.909059   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:12.142586   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:12.296143   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:12.462178   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'testsrc life'}}
+02/29/2024, 17:01:13.317976   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:18.749959   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=8 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:19.613438   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 17:01:19.614435   [enc5]Stop encoder..
+02/29/2024, 17:01:19.619422   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 17:01:19.620420   [enc5 Finish encoder
+02/29/2024, 17:01:19.621417   [enc5] Finish encoder. escape from running loop
+02/29/2024, 17:01:21.285150   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:01:21.287389   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=8 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:01:21.309331   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:01:23.290005   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=8" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:01:24.793035   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:24.797288   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:24.800912   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:24.801913   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:24.802912   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:24.803909   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:33.286043   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:34.190059   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 17:01:34.191056   [enc5]Stop encoder..
+02/29/2024, 17:01:34.206016   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 17:01:34.207211   [enc5 Finish encoder
+02/29/2024, 17:01:34.209205   [enc5] Finish encoder. escape from running loop
+02/29/2024, 17:01:35.237846   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:01:35.239841   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:01:35.262780   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:01:37.245318   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=4" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:01:38.639103   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:38.641097   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:38.641097   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:38.642094   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:38.643091   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:38.644089   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:39.918754   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:39.921745   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:39.921745   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:39.922742   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:39.922742   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:39.923748   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:41.064867   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:41.066869   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:41.066869   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:41.067874   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:41.067874   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:41.069854   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:41.437686   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:41.440619   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:41.440619   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:41.440619   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:41.441662   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:41.443611   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:41.682089   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:41.684084   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:41.684084   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:41.685081   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:41.685081   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:41.687224   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:42.869651   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 17:01:42.870648   [enc5]Stop encoder..
+02/29/2024, 17:01:42.876631   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 17:01:42.877630   [enc5 Finish encoder
+02/29/2024, 17:01:42.878627   [enc5] Finish encoder. escape from running loop
+02/29/2024, 17:01:46.573946   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:01:46.575942   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:01:46.598047   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:01:48.577292   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=4" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:01:49.323662   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:49.325656   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:49.326655   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:49.326655   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:49.327651   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:49.329646   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:50.331984   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:01:50.345993   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:01:50.349079   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:01:50.349079   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:01:50.351073   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:01:50.350076   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:01:52.302400   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:52.654697   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:52.814845   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:58.446295   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:58.982709   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:01:59.750068   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 17:01:59.751064   [enc5]Stop encoder..
+02/29/2024, 17:01:59.757054   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 17:01:59.758124   [enc5 Finish encoder
+02/29/2024, 17:01:59.759044   [enc5] Finish encoder. escape from running loop
+02/29/2024, 17:02:00.622017   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:02:00.624010   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:02:00.644956   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:02:02.625496   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=4" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:02:03.483800   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:02:03.485793   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:02:03.485793   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:02:03.486933   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:02:03.486933   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:02:03.488927   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:02:04.261004   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:02:04.263008   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:02:04.263008   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:02:04.263008   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:02:04.263996   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:02:04.265992   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:02:04.776576   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:02:04.779568   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:02:04.779568   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:02:04.779568   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:02:04.781562   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:02:04.782560   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:02:05.074180   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:02:05.077173   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:02:05.077173   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:02:05.078170   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:02:05.079168   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:02:05.080164   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:02:24.014323   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:24.391281   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:24.599367   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:33.301683   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:34.102529   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 17:02:34.103511   [enc5]Stop encoder..
+02/29/2024, 17:02:34.110493   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 17:02:34.111490   [enc5 Finish encoder
+02/29/2024, 17:02:34.112487   [enc5] Finish encoder. escape from running loop
+02/29/2024, 17:02:34.926977   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:02:34.928971   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:02:34.951063   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:02:36.929463   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=4" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:02:41.633438   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:02:41.635433   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:02:41.635433   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:02:41.636429   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:02:41.636429   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:02:41.637434   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:02:43.375530   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:02:43.377489   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:02:43.378485   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:02:43.378485   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:02:43.378485   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:02:43.380481   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:02:52.382423   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:52.751464   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:53.135643   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:53.303401   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:53.742785   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:53.911186   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:54.198356   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:54.392201   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:54.550875   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:56.550374   decode protcol ->  {'cmd': 'enc6get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'testsrc life'}}
+02/29/2024, 17:02:57.453744   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live:8935/enc4\n# This is comment 2\nffmpeg -f lavfi -i life,edgedetect,negate -c:v h264 -an -f flv rtmp://127.0.0.1:8935/live/enc4', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:58.254236   decode protcol ->  {'cmd': 'enc4get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': '인코더4'}}
+02/29/2024, 17:02:59.382369   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\n#ffmpeg -f lavfi -re -i testsrc2=size=800x720 -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1/live/enc4\n# This is comment 2\nffmpeg -i rtmp://210.216.76.120/live/sbsonair -c copy -f flv rtmp://127.0.0.1:8935/live/enc1', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:02:59.975025   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:03:00.231517   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:03:00.422572   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:03:00.614445   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:03:00.918791   decode protcol ->  {'cmd': 'enc5get', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=4 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:03:07.560024   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:03:09.521678   decode protcol ->  {'cmd': 'enc5set', 'data': {'param': '#this is comment...\nffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3\n# This is comment 2', 'timetb': '03:00', 'title': 'encoder 9999'}}
+02/29/2024, 17:03:10.878320   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 17:03:10.880315   [enc5]Stop encoder..
+02/29/2024, 17:03:10.886300   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 17:03:10.888508   [enc5 Finish encoder
+02/29/2024, 17:03:10.888508   [enc5] Finish encoder. escape from running loop
+02/29/2024, 17:03:12.383480   decode protcol ->  {'cmd': 'enc5start', 'data': {}}
+02/29/2024, 17:03:12.384530   [enc5 run with param] ==> 
+ffmpeg -f lavfi -re -i haldclutsrc=2 -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+02/29/2024, 17:03:12.405421   [enc5stat] ## Duration detected....  N/A, start:
+02/29/2024, 17:03:14.386134   [enc5]ffreport size changed - 
+Command line:
+ffmpeg -f lavfi -re -i "haldclutsrc=2" -pix_fmt yuv420p -c:v h264 -b:v 2000k -g 5 -f flv -an rtmp://127.0.0.1:8935/live/enc3
+
+02/29/2024, 17:03:19.907721   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:03:19.910713   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:03:19.910713   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:03:19.910713   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:03:19.911711   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:03:19.913706   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:03:23.770321   decode protcol ->  {'cmd': 'enc1get', 'data': {}}
+02/29/2024, 17:03:23.772316   decode protcol ->  {'cmd': 'enc3get', 'data': {}}
+02/29/2024, 17:03:23.772316   decode protcol ->  {'cmd': 'enc2get', 'data': {}}
+02/29/2024, 17:03:23.772316   decode protcol ->  {'cmd': 'enc4get', 'data': {}}
+02/29/2024, 17:03:23.773319   decode protcol ->  {'cmd': 'enc5get', 'data': {}}
+02/29/2024, 17:03:23.775308   decode protcol ->  {'cmd': 'enc6get', 'data': {}}
+02/29/2024, 17:47:54.238968   [enc2]ffreport size changed - 
+Command line:
+ffmpeg -format_code Hi59 -draw_bars 0 -f decklink -channels 2 -queue_size 400000000 -audio_depth 32 -i "DeckLink Studio 4K" -pix_fmt yuv420p -vf yadif -c:v h264 -preset:v veryfast -tune zerolatency -b:v 2000k -bufsize 2000k -c:a aac -f flv rtmp://127.0.0.1:8935/live/enc2
+[aist#0:0/pcm_s32le @ 0000029a56a3a740] Guessed Channel Layout: stereo
+[libx264 @ 0000029a56a62580] VBV maxrate unspecified, assuming CBR
+[libx264 @ 0000029a56a62580] VBV underflow (frame 81544, -32539 bits)
+[libx264 @ 0000029a56a62580] VBV underflow (frame 180084, -32928 bits)
+
+02/29/2024, 18:11:06.194265   decode protcol ->  {'cmd': 'enc1stop', 'data': {}}
+02/29/2024, 18:11:06.196259   [enc1]Stop encoder..
+02/29/2024, 18:11:06.698868   decode protcol ->  {'cmd': 'enc2stop', 'data': {}}
+02/29/2024, 18:11:06.699865   [enc2]Stop encoder..
+02/29/2024, 18:11:06.745312   [enc2stat] ffmpeg process exited with error code 1
+02/29/2024, 18:11:06.747307   [enc2 Finish encoder
+02/29/2024, 18:11:06.748304   [enc2] Finish encoder. escape from running loop
+02/29/2024, 18:11:07.109815   decode protcol ->  {'cmd': 'enc3stop', 'data': {}}
+02/29/2024, 18:11:07.110812   [enc3]Stop encoder..
+02/29/2024, 18:11:07.550261   decode protcol ->  {'cmd': 'enc4stop', 'data': {}}
+02/29/2024, 18:11:07.551187   [enc4]Stop encoder..
+02/29/2024, 18:11:07.556175   [enc4stat] ffmpeg process exited with error code 1
+02/29/2024, 18:11:07.558169   [enc4 Finish encoder
+02/29/2024, 18:11:07.558169   [enc4] Finish encoder. escape from running loop
+02/29/2024, 18:11:07.963162   decode protcol ->  {'cmd': 'enc5stop', 'data': {}}
+02/29/2024, 18:11:07.965142   [enc5]Stop encoder..
+02/29/2024, 18:11:07.970317   [enc5stat] ffmpeg process exited with error code 1
+02/29/2024, 18:11:07.971314   [enc5 Finish encoder
+02/29/2024, 18:11:07.972311   [enc5] Finish encoder. escape from running loop
+02/29/2024, 18:11:08.413073   decode protcol ->  {'cmd': 'enc6stop', 'data': {}}
+02/29/2024, 18:11:08.415069   [enc6]Stop encoder..
+02/29/2024, 18:11:08.426040   [enc6stat] ffmpeg process exited with error code 1
+02/29/2024, 18:11:08.427036   [enc6 Finish encoder
+02/29/2024, 18:11:08.428038   [enc6] Finish encoder. escape from running loop
