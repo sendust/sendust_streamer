@@ -3,7 +3,7 @@
 #  node, express, ffmpeg
 #   2024/2/17   first code.
 #   2024/2/21   Improve encoder thread handling, logging, more protocol commands
-#   2024/3/18   ffreport message tolerance 300 -> 3000
+#   2024/3/18   ffreport message tolerance 300 -> 5000
 
 
 
@@ -192,7 +192,7 @@ class encoder:
         size_delta_ffreport = size_ffreport - self.size_ffreport_before
         if size_delta_ffreport:
             updatelog(f'[{self.name}]ffreport size changed - \n{self.read_ffreport()}')
-        if size_delta_ffreport > 3000:   # tee, DTS error message > 800  (very long)
+        if size_delta_ffreport > 5000:   # tee, DTS error message > 800  (very long)
             updatelog(f'[{self.name}]ffreport delta has abnormal size.. kill encoder')
             self.kill()
             time.sleep(0.1)
